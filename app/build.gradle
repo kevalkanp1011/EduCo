@@ -3,11 +3,12 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id 'kotlinx-serialization'
-    id 'dagger.hilt.android.plugin'
+    id 'kotlin-parcelize'
+    id 'com.google.dagger.hilt.android'
 }
 
 android {
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "dev.kevalkanpariya.educo"
@@ -39,7 +40,8 @@ android {
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion compose_version
+        kotlinCompilerExtensionVersion "1.2.0"
+        kotlinCompilerVersion compose_version
     }
     packagingOptions {
         resources {
@@ -54,7 +56,7 @@ dependencies {
     implementation "androidx.compose.ui:ui:$compose_version"
     implementation "androidx.compose.material:material:$compose_version"
     implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.0'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.1'
     implementation "androidx.activity:activity-compose:$compose_version"
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
@@ -62,8 +64,12 @@ dependencies {
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
 
+    // LiveData
+    implementation "androidx.compose.runtime:runtime-livedata:$compose_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.6.0-alpha01"
+
     // Navigation Compose
-    implementation "androidx.navigation:navigation-compose:2.5.0"
+    implementation "androidx.navigation:navigation-compose:2.5.1"
 
     // Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
@@ -71,10 +77,10 @@ dependencies {
     implementation "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0"
 
     // Splash API
-    implementation 'androidx.core:core-splashscreen:1.0.0-rc01'
+    implementation 'androidx.core:core-splashscreen:1.0.0'
 
     // Paging 3.0
-    implementation 'androidx.paging:paging-compose:1.0.0-alpha15'
+    implementation 'androidx.paging:paging-compose:1.0.0-alpha16'
 
     // Coil
     implementation("io.coil-kt:coil-compose:1.4.0")
@@ -89,19 +95,32 @@ dependencies {
     // System UI Controller - Accompanist
     implementation "com.google.accompanist:accompanist-systemuicontroller:$accompanist_version"
 
+    implementation "com.google.accompanist:accompanist-flowlayout:$accompanist_version"
+
     // DataStore Preferences
     implementation("androidx.datastore:datastore-preferences:1.0.0")
 
     // Dagger - Hilt
-    implementation "com.google.dagger:hilt-android:2.41"
-    kapt "com.google.dagger:hilt-android-compiler:2.38.1"
-    kapt 'androidx.hilt:hilt-compiler:1.0.0'
+    implementation 'com.google.dagger:hilt-android:2.43.2'
+    kapt 'com.google.dagger:hilt-compiler:2.43.2'
+
     implementation 'androidx.hilt:hilt-navigation-compose:1.0.0'
 
     // Palette API
     implementation "androidx.palette:palette-ktx:1.0.0"
 
-    implementation "com.google.accompanist:accompanist-flowlayout:$accompanist_version"
-    // ConstraintLayout
-    implementation "androidx.constraintlayout:constraintlayout-compose:1.1.0-alpha03"
+    // Sign in With Google
+    implementation 'com.google.android.gms:play-services-auth:20.2.0'
+
+    // FOR LOGGING
+    implementation "com.jakewharton.timber:timber:5.0.1"
+
+    // Constraint Layout
+    implementation "androidx.constraintlayout:constraintlayout-compose:1.0.1"
+
+
+}
+
+kapt {
+    correctErrorTypes true
 }
