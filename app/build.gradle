@@ -5,6 +5,7 @@ plugins {
     id 'kotlinx-serialization'
     id 'kotlin-parcelize'
     id 'com.google.dagger.hilt.android'
+    id 'com.google.devtools.ksp' version '1.6.10-1.0.2'
 }
 
 android {
@@ -36,12 +37,21 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    kotlin {
+        sourceSets {
+            debug {
+                kotlin.srcDir("build/generated/ksp/debug/kotlin")
+            }
+            release {
+                kotlin.srcDir("build/generated/ksp/release/kotlin")
+            }
+        }
+    }
     buildFeatures {
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion "1.2.0"
-        kotlinCompilerVersion compose_version
+        kotlinCompilerExtensionVersion "1.3.2"
     }
     packagingOptions {
         resources {
@@ -52,12 +62,16 @@ android {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.8.0'
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.1'
+    //Compose
     implementation "androidx.compose.ui:ui:$compose_version"
     implementation "androidx.compose.material:material:$compose_version"
     implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.1'
     implementation "androidx.activity:activity-compose:$compose_version"
+    implementation 'com.google.android.material:material:1.6.1'
+
+    //Testing
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
@@ -69,7 +83,12 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.6.0-alpha01"
 
     // Navigation Compose
-    implementation "androidx.navigation:navigation-compose:2.5.1"
+    implementation "androidx.navigation:navigation-compose:2.5.3"
+
+    // FOR NAVIGATION
+    ksp 'io.github.raamcosta.compose-destinations:ksp:1.4.2-beta'
+    implementation 'io.github.raamcosta.compose-destinations:core:1.4.2-beta'
+    // END FOR NAVIGATION
 
     // Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
@@ -80,7 +99,7 @@ dependencies {
     implementation 'androidx.core:core-splashscreen:1.0.0'
 
     // Paging 3.0
-    implementation 'androidx.paging:paging-compose:1.0.0-alpha16'
+    implementation 'androidx.paging:paging-compose:1.0.0-alpha17'
 
     // Coil
     implementation("io.coil-kt:coil-compose:1.4.0")
@@ -110,7 +129,7 @@ dependencies {
     implementation "androidx.palette:palette-ktx:1.0.0"
 
     // Sign in With Google
-    implementation 'com.google.android.gms:play-services-auth:20.2.0'
+    implementation 'com.google.android.gms:play-services-auth:20.3.0'
 
     // FOR LOGGING
     implementation "com.jakewharton.timber:timber:5.0.1"

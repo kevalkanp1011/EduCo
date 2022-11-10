@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -15,8 +16,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import dev.kevalkanpariya.educo.R
+import dev.kevalkanpariya.educo.domain.model.courses
 import dev.kevalkanpariya.educo.presentation.components.SearchBar
 
+@Preview
 @Composable
 fun SearchResultScreen() {
     Column(
@@ -41,23 +44,20 @@ fun SearchResultScreen() {
 @Composable
 fun SearchResult() {
     LazyColumn(verticalArrangement = Arrangement.spacedBy(20.dp)) {
-        item {
-            SearchReItempw()
-        }
-        item {
-            SearchReItempw()
-        }
-        item {
-            SearchReItempw()
-        }
-        item {
-            SearchReItempw()
+        items(courses) {
+                course -> CourseItem(
+            course_title = course.courseTitle,
+            teacher_name = course.course_teacher.name,
+            noOfStudentEnrolled = course.noOfStudentEnrolled,
+            rating = course.rating,
+            image = course.image
+        )
         }
     }
 }
 
 @Composable
-fun SearchResultItem(
+fun CourseItem(
     course_title: String,
     teacher_name: String,
     noOfStudentEnrolled: Int,
@@ -90,28 +90,3 @@ fun SearchResultItem(
             }
         }
 }
-
-@Preview
-@Composable
-fun SearchReItempw() {
-    SearchResultItem(
-        course_title = "Adobe illustrator for all beginner artist",
-        teacher_name = "Samule Doe",
-        noOfStudentEnrolled = 4,
-        rating = 4.7,
-        image = R.drawable.interiordesign
-    )
-}
-
-
-@Preview
-@Composable
-fun SearchResultPW() {
-    SearchResultScreen()
-}
-
-/*@Preview
-@Composable
-fun TestIcon() {
-    Icon(painter = painterResource(id = R.drawable.ic_star), contentDescription = "mod1", tint = Color(0XffFFA927))
-}*/

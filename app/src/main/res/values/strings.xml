@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">EduCo</string>
-    <string name="gcp_id">716628650236-96qlhopigd3lve4jacc4eh5487lsmgeb.apps.googleusercontent.com</string>
+    <string name="gcp_id" translatable="false">716628650236-96qlhopigd3lve4jacc4eh5487lsmgeb.apps.googleusercontent.com</string>
     <string name="auth_error_msg">Login Error</string>
 </resources>

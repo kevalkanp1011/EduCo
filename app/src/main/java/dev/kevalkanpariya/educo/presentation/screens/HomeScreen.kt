@@ -8,16 +8,20 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import dev.kevalkanpariya.educo.domain.model.keval
 import dev.kevalkanpariya.educo.google.GoogleUserModel
 import dev.kevalkanpariya.educo.presentation.components.Header
 import dev.kevalkanpariya.educo.presentation.components.SearchBar
 
+@Destination
 @Composable
 fun HomeScreen(
-    userModel: GoogleUserModel
+    userModel: GoogleUserModel,
+    navController: NavHostController
 ) {
     Column(
         Modifier
@@ -36,13 +40,4 @@ fun HomeScreen(
             }
         }*/
     }
-}
-
-@Preview
-@Composable
-fun HomePreview() {
-    HomeScreen(userModel = GoogleUserModel(
-        email = "user?.email",
-        name = "user?.name",
-    ))
 }

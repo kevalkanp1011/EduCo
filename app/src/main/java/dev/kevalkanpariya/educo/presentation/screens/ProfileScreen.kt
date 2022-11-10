@@ -2,7 +2,6 @@ package dev.kevalkanpariya.educo.presentation.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.*
@@ -11,7 +10,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.layout.layoutId
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -22,11 +20,14 @@ import androidx.constraintlayout.compose.Dimension
 import androidx.constraintlayout.compose.layoutId
 import dev.kevalkanpariya.educo.R
 import dev.kevalkanpariya.educo.domain.model.Student
-import dev.kevalkanpariya.educo.domain.model.sudorizwan
-import dev.kevalkanpariya.educo.presentation.screens.search.SearchReItempw
+import dev.kevalkanpariya.educo.domain.model.keval
+import dev.kevalkanpariya.educo.domain.model.kevalkanpariya
+import dev.kevalkanpariya.educo.presentation.screens.student_profile.personal.Courses
+import dev.kevalkanpariya.educo.ui.theme.Grey700
 import dev.kevalkanpariya.educo.ui.theme.Grey800
 
-//student: Student
+
+//StudentProfile
 @Composable
 private fun ProfileContent(student: Student) {
     Column(modifier = Modifier.layoutId("content")) {
@@ -36,23 +37,22 @@ private fun ProfileContent(student: Student) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Spacer(modifier = Modifier.height(10.dp))
-            Text("@KK1012")
+            Text("@${student.username}")
             Spacer(modifier = Modifier.height(15.dp))
-            Text(text = "Just a simple guy who loves do something new and fun!", textAlign = TextAlign.Center)
+            Text(text = student.bio, textAlign = TextAlign.Center)
             Spacer(modifier = Modifier.height(15.dp))
             
             Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                Icon(painter = painterResource(id = R.drawable.ic_instagram), contentDescription = "Instagram")
-                Icon(painter = painterResource(id = R.drawable.ic_facebook), contentDescription = "Facebook")
-                Icon(painter = painterResource(id = R.drawable.ic_twitter), contentDescription = "Twitter")
+                Image(painter = painterResource(id = R.drawable.ic_instagram), contentDescription = "Instagram")
+                Image(painter = painterResource(id = R.drawable.ic_facebook), contentDescription = "Facebook")
+                Image(painter = painterResource(id = R.drawable.ic_twitter), contentDescription = "Twitter")
                 
             }
-
-
         }
+
         Spacer(Modifier.height(32.dp))
         var state by remember { mutableStateOf(0) }
-        val titles = listOf("Projects", "Courses", "Following")
+        val titles = listOf("03\nProjects", "04\nCourses", "08\nFollowing")
         TabRow(
             selectedTabIndex = state,
             backgroundColor = Color.Transparent,
@@ -60,42 +60,23 @@ private fun ProfileContent(student: Student) {
         ) {
             titles.forEachIndexed { index, title ->
                 Tab(
-                    text = { Text(title) },
+                    text = {
+                        Column {
+                            Text(title, color = Grey700)
+                        }
+                           },
                     selected = state == index,
                     onClick = { state = index }
                 )
             }
         }
         Spacer(Modifier.height(30.dp))
-        /*Text(
-            modifier = Modifier.align(Alignment.CenterHorizontally),
-            text = "Text tab ${state + 1} selected",
-            style = MaterialTheme.typography.body1
-        )*/
-        LazyColumn(
-            Modifier.padding(horizontal = 20.dp),
-            verticalArrangement = Arrangement.spacedBy(20.dp)
-        ) {
-            item {
-                SearchReItempw()
-            }
-            item {
-                SearchReItempw()
-            }
-            item {
-                SearchReItempw()
-            }
-            item {
-                SearchReItempw()
-            }
-        }
-        /*CustomDivider()
-        tweets.filter { it.student == student }.forEach { tweet ->
-            TweetLayout(tweet)
-            CustomDivider()
-        }*/
+        Courses()
+
     }
 }
+
+
 
 @Composable
 private fun Avatar(student: Student) {
@@ -108,11 +89,6 @@ private fun Avatar(student: Student) {
             .layoutId("avatar"),
         contentScale = ContentScale.Crop
     )
-}
-@Preview
-@Composable
-fun PreviewProfile() {
-    StudentProfile(student = sudorizwan)
 }
 
 
@@ -187,9 +163,6 @@ private fun decoupledConstraints(): ConstraintSet {
 
 @Preview
 @Composable
-fun IconAvatar() {
-    Icon(painter = painterResource(id = R.drawable.ic_instagram), contentDescription = "Instagram")
-    Icon(painter = painterResource(id = R.drawable.ic_facebook), contentDescription = "Facebook")
-    Icon(painter = painterResource(id = R.drawable.ic_twitter), contentDescription = "Twitter")
-
+fun PreviewProfile() {
+    StudentProfile(student = keval)
 }
