@@ -67,6 +67,7 @@ fun AuthScreen(
                 } else {
                     isError.value = true
                 }
+
             } catch (e: ApiException) {
                 Timber.d("Error in AuthScreen%s", e.toString())
             }
