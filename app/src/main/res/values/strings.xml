@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Feature Test EduCo</string>
+    <string name="on_boarding_image">On Boarding Image</string>
+    <string name="sign_in_title">Sign in to Continue</string>
+    <string name="sign_in_subtitle">if you want to access this app,\nfirst you need to sign in.</string>
+    <string name="default_web_client_id">Sign in to Continue</string>
+
+</resources>
