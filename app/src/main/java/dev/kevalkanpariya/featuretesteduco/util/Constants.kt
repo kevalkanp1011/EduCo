@@ -12,12 +12,12 @@ object Constants {
     const val ABOUT_TEXT_MAX_LINES = 7
 
     const val MIN_BACKGROUND_IMAGE_HEIGHT = 0.5f
-    const val BASE_URL = "http://localhost:8080/"
+    const val BASE_URL = "http://192.168.25.154:8080/"
 
     const val PREFERENCES_NAME_2 = "app_preferences"
     const val PREFERENCES_SIGNED_IN_KEY = "signed_in_key"
 
-    const val CLIENT_ID = "Your_client_id"
+    const val CLIENT_ID = "716628650236-no5j8p116gnqlcqao3kjeafitir12j5h.apps.googleusercontent.com"
 
     const val MAX_LENGTH = 20
 }
