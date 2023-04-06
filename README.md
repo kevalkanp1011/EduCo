@@ -1,5 +1,5 @@
 # EduCo
-Online Learning Plateform through Courses
+EduCo is an online learning app completely built with Jetpack Compose
 
  * Copyright @2023
  * Licensed under the Apache License, Version 2.0 (the "License");
