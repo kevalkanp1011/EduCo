@@ -23,10 +23,26 @@ https://github.com/keval-kanp-1011/educo-server
 
 ## ⚒️ Built with ❤️ using Kotlin
 
+| Tools | Link |
+| ------ | ------ |
+| 👨‍💻 Kotlin | [Kotlin](https://kotlinlang.org/) |
+| 💛Jetpack Compose | [Jetpack Compose](https://developer.android.com/jetpack/compose) |
+| 🌐 Material Design | [Material Design](https://material.io/design) |
+| 🌊 Coroutines | [Kotlin Coroutines](https://kotlinlang.org/docs/coroutines) |
+| 🧭 Navigation Compose | [Navigation Compose](https://developer.android.com/jetpack/compose/navigation) |
+| 🎨 Accompanist | [Accompanist](https://github.com/google/accompanist) |
+| 💉 Dagger Hilt | [dagger hilt](https://dagger.dev/hilt/) |
+| 📊 KMongo | [MongoDb for Kotlin](https://github.com/Litote/kmongo) |
+| 🖼️ Coil | [Coil for Image Loading](https://github.com/coil-kt/coil) |
+| See more for build.gradle(App Module File) |
+
+
+
 
 ## Design Credit
 https://www.figma.com/file/Q7uBQJUoO6xRpxrZGfYXDL/EduCo
 
-## License
+## Get in touch!
 
+## License
 This project is licensed under the [MIT License](LICENSE).
