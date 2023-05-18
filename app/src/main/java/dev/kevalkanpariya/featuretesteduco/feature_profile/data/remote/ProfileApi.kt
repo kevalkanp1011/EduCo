@@ -27,9 +27,9 @@ interface ProfileApi {
     @Multipart
     @PUT("/api/user/profile/update")
     suspend fun updateProfile(
-        @Part updateProfileData: MultipartBody.Part,
-        @Part bannerImageUri: MultipartBody.Part?,
-        @Part profilePictureUri: MultipartBody.Part?
+        @Part("update_profile_data") updateProfileData: MultipartBody.Part,
+        @Part("banner_image") bannerImageUri: MultipartBody.Part?,
+        @Part("profile_picture") profilePictureUri: MultipartBody.Part?
     ): BasicApiResponse<Unit>
 
 

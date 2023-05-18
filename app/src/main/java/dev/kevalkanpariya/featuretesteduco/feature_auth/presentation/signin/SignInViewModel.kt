@@ -56,6 +56,7 @@ class SignInViewModel @Inject constructor(
                         email = emailState.value.text,
                         password = passwordState.value.text
                     )
+
                     _signInState.value = signInState.value.copy(isLoading = false)
                     if(signInResult.emailError != null) {
                         _emailState.value = emailState.value.copy(
@@ -78,6 +79,7 @@ class SignInViewModel @Inject constructor(
                                 )
                             )
                         }
+
                         else -> {}
                     }
                 }

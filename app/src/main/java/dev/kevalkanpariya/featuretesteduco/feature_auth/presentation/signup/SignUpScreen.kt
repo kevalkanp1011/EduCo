@@ -32,7 +32,6 @@ import kotlinx.coroutines.flow.collectLatest
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun SignUpScreen(
-    navController: NavController,
     scaffoldState: ScaffoldState,
     onPopBackStack: () -> Unit,
     viewModel: SignUpViewModel = hiltViewModel()
@@ -60,7 +59,7 @@ fun SignUpScreen(
                         duration = SnackbarDuration.Long
                     )
                 }
-                else -> {}
+                else -> Unit
             }
         }
     }
@@ -82,7 +81,7 @@ fun SignUpScreen(
                 .align(Alignment.Center),
         ) {
             Text(
-                text = stringResource(id = R.string.register),
+                text = stringResource(id = R.string.signup),
                 style = MaterialTheme.typography.h2
             )
             Spacer(modifier = Modifier.height(SpaceMedium))
@@ -155,7 +154,7 @@ fun SignUpScreen(
                     .align(Alignment.End)
             ) {
                 Text(
-                    text = stringResource(id = R.string.register),
+                    text = stringResource(id = R.string.signup),
                     color = MaterialTheme.colors.onPrimary
                 )
             }
@@ -182,7 +181,7 @@ fun SignUpScreen(
             modifier = Modifier
                 .align(Alignment.BottomCenter)
                 .clickable {
-                    navController.popBackStack()
+                    onPopBackStack()
                 }
         )
     }

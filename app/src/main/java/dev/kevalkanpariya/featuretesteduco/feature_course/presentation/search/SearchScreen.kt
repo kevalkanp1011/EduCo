@@ -90,7 +90,7 @@ fun SearchScreen(
                     overflow = TextOverflow.Ellipsis,
                     maxLines = 1,
                     color = Color(0xFF282F3E),
-                    fontSize = 16.sp
+                    fontSize = 12.sp
                 )
             }
         }

@@ -9,13 +9,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.layout
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.ImageLoader
@@ -23,16 +18,12 @@ import com.google.accompanist.pager.*
 import dev.kevalkanpariya.featuretesteduco.core.domain.models.Comment
 import dev.kevalkanpariya.featuretesteduco.core.domain.models.CourseResource
 import dev.kevalkanpariya.featuretesteduco.core.domain.models.Lesson
-import dev.kevalkanpariya.featuretesteduco.core.domain.models.Project
 import dev.kevalkanpariya.featuretesteduco.core.domain.states.StandardTextFieldState
-import dev.kevalkanpariya.featuretesteduco.core.domain.util.AndroidDownloader
-import dev.kevalkanpariya.featuretesteduco.core.util.Screen
-import dev.kevalkanpariya.featuretesteduco.feature_course.presentation.course_detail.CourseDetailEvent
 import dev.kevalkanpariya.featuretesteduco.feature_course.presentation.course_detail.CourseOverviewState
 import dev.kevalkanpariya.featuretesteduco.ui.theme.*
 import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalPagerApi::class)
+@OptIn(ExperimentalPagerApi::class, ExperimentalMaterialApi::class)
 @Composable
 fun TabsLayout(
     courseOverviewState: CourseOverviewState,
@@ -45,6 +36,7 @@ fun TabsLayout(
     commentState: StandardTextFieldState,
     onCommentValueChange: (String) -> Unit = {},
     onSendClick: () -> Unit = {},
+    scaffoldState: BottomSheetScaffoldState
 ) {
     val pagerState = rememberPagerState()
     Tabs(pagerState = pagerState)
@@ -59,7 +51,8 @@ fun TabsLayout(
         commentState = commentState,
         onCommentValueChange = onCommentValueChange,
         onSendClick =onSendClick,
-        courseOverviewState = courseOverviewState
+        courseOverviewState = courseOverviewState,
+        scaffoldState = scaffoldState
     )
 }
 
@@ -104,6 +97,7 @@ fun Tabs(pagerState: PagerState) {
     }
 }
 
+@OptIn(ExperimentalMaterialApi::class)
 @ExperimentalPagerApi
 @Composable
 fun TabsContent(
@@ -118,6 +112,7 @@ fun TabsContent(
     commentState: StandardTextFieldState,
     onCommentValueChange: (String) -> Unit = {},
     onSendClick: () -> Unit = {},
+    scaffoldState: BottomSheetScaffoldState
 ) {
     HorizontalPager(state = pagerState, count = 2) {page ->
         when (page) {
@@ -129,7 +124,8 @@ fun TabsContent(
                 onLikedByClick = onLikedByClick,
                 commentState = commentState,
                 onCommentValueChange = onCommentValueChange,
-                onSendClick = onSendClick
+                onSendClick = onSendClick,
+                scaffoldState = scaffoldState
             )
             1 -> LessonsScreen(
                 lessons = lessons,
@@ -153,15 +149,11 @@ fun CourseOverViewScreen(
     commentState: StandardTextFieldState,
     onCommentValueChange: (String) -> Unit = {},
     onSendClick: () -> Unit = {},
+    scaffoldState: BottomSheetScaffoldState
 ) {
 
-    val sheetState = rememberBottomSheetState(
-        initialValue = BottomSheetValue.Collapsed
-    )
-    val scaffoldState = rememberBottomSheetScaffoldState(
-        bottomSheetState = sheetState
-    )
     val scope = rememberCoroutineScope()
+
 
     //val oll = if (sheetState.isCollapsed) Color.White else Color.Black.copy(alpha = 0.5f)
 
@@ -231,11 +223,13 @@ fun CourseOverViewScreen(
                     TextButton(
                         onClick = {
                             scope.launch {
-                                if (sheetState.isCollapsed) {
-                                    sheetState.expand()
-                                } else {
-                                    sheetState.collapse()
+                                if(scaffoldState.bottomSheetState.isCollapsed) {
+                                    scaffoldState.bottomSheetState.expand()
                                 }
+                                else if(scaffoldState.bottomSheetState.isExpanded) {
+                                    scaffoldState.bottomSheetState.collapse()
+                                }
+
 
                             }
                                   },

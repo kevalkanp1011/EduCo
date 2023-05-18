@@ -21,7 +21,6 @@ data class Profile(
     fun toUpdateProfileData(): UpdateProfileData {
         return UpdateProfileData(
             username = username,
-            profilePictureUrl = profilePictureUrl,
             bio = bio,
             instagramUrl = instagramUrl,
             facebookUrl = faceBookUrl,

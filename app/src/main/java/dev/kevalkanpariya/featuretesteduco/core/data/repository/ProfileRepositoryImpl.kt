@@ -123,13 +123,13 @@ class ProfileRepositoryImpl(
         val profilePictureFile = Uri.fromFile(
             File(
                 context.cacheDir,
-                context.contentResolver.getFileName(profilePictureUri!!)
+                profilePictureUri?.let { context.contentResolver.getFileName(it) }
             )
         ).toFile()
         val bannerFile = Uri.fromFile(
             File(
                 context.cacheDir,
-                context.contentResolver.getFileName(bannerImageUri!!)
+                bannerImageUri?.let { context.contentResolver.getFileName(it) }
             )
         ).toFile()
 

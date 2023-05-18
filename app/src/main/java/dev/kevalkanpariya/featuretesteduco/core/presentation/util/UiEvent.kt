@@ -10,6 +10,4 @@ sealed class UiEvent: Event() {
     object OnSignIn: UiEvent()
     object OnSignOut: UiEvent()
     object OnResetPassword: UiEvent()
-    object SaveProfileSettings: UiEvent()
-    object OnSearch: UiEvent()
 }

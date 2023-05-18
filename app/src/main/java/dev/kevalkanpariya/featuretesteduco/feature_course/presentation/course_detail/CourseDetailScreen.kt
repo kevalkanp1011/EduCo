@@ -8,13 +8,11 @@ import androidx.compose.foundation.lazy.staggeredgrid.items
 import androidx.compose.foundation.lazy.staggeredgrid.rememberLazyStaggeredGridState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.ScaffoldState
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.graphics.Color
@@ -42,7 +40,9 @@ import dev.kevalkanpariya.featuretesteduco.ui.theme.Grey700
 import dev.kevalkanpariya.featuretesteduco.ui.theme.Grey800
 import dev.kevalkanpariya.featuretesteduco.ui.theme.TagBG
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun CourseDetailScreen(
     scaffoldState: ScaffoldState,
@@ -60,6 +60,29 @@ fun CourseDetailScreen(
 
     val focusRequester = remember {
         FocusRequester()
+    }
+
+    val sheetState = rememberBottomSheetState(
+        initialValue = BottomSheetValue.Collapsed
+    )
+    val bottomSheetScaffoldState = rememberBottomSheetScaffoldState(
+        bottomSheetState = sheetState
+    )
+    val scope = rememberCoroutineScope()
+    val expandProgress = bottomSheetScaffoldState.bottomSheetState.expandProgress
+
+    if (expandProgress > 0f) {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .alpha(expandProgress * 0.5f)
+                .background(Color.Black)
+                .clickable {
+                    scope.launch {
+                        bottomSheetScaffoldState.bottomSheetState.collapse()
+                    }
+                }
+        )
     }
 
     val context = LocalContext.current
@@ -85,6 +108,7 @@ fun CourseDetailScreen(
         modifier = Modifier
             .background(color = Color.White)
             .fillMaxWidth()
+
     ) {
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -125,23 +149,9 @@ fun CourseDetailScreen(
                 modifier = Modifier
                     .height(200.dp)
             ) {
-                /*Image(
-                    painter = painterResource(id = R.drawable.details_img),
-                    contentDescription = "",
-                    modifier = Modifier.fillMaxSize()
-                )*/
-                VideoView(videoUri = state.course?.courseIntroVideoUrl?: "https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4")
-                /*Box(
-                    modifier = Modifier
-                        .fillMaxSize(),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Image(
-                        painter = painterResource(id = R.drawable.ic_play),
-                        contentDescription = null
-                    )
-
-                }*/
+                VideoView(
+                    videoUri = state.course?.courseIntroVideoUrl?: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                )
             }
 
         }
@@ -294,12 +304,36 @@ fun CourseDetailScreen(
                 onSendClick = {
                     viewModel.onEvent(CourseDetailEvent.Comment)
                 },
+                scaffoldState = bottomSheetScaffoldState
             )
 
         }
     }
 
 }
+
+
+@OptIn(ExperimentalMaterialApi::class)
+val BottomSheetState.expandProgress: Float
+    get() {
+        return when (progress.from) {
+            BottomSheetValue.Collapsed -> {
+                when (progress.to) {
+                    BottomSheetValue.Collapsed -> 0f
+                    BottomSheetValue.Expanded -> progress.fraction
+                }
+            }
+            BottomSheetValue.Expanded -> {
+                when (progress.to) {
+                    BottomSheetValue.Collapsed -> 1f - progress.fraction
+                    BottomSheetValue.Expanded -> 1f
+                }
+            }
+        }
+    }
+
+
+
 
 private val tabContainerModifier = Modifier
     .fillMaxWidth()

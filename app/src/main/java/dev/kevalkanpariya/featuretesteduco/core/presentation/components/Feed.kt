@@ -34,16 +34,19 @@ import dev.kevalkanpariya.featuretesteduco.ui.theme.Grey500
 import dev.kevalkanpariya.featuretesteduco.ui.theme.Grey900
 
 @Composable
-fun UserHeader(name: String, profilePictureUrl: String) {
+fun UserHeader(
+    name: String,
+    profilePictureUrl: String? = null
+) {
     Row(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
-    ){
-        Column() {
+    ) {
+        Column {
             Text(text = "Hola, $name!", fontSize = 20.sp, color = Grey900)
             Spacer(modifier = Modifier.height(5.dp))
-            Text(text = "What do you wanna learn today?",fontSize = 14.sp, color = Grey500)
+            Text(text = "What do you wanna learn today?", fontSize = 14.sp, color = Grey500)
         }
         AsyncImage(
             model = ImageRequest.Builder(LocalContext.current)
@@ -75,7 +78,7 @@ fun PopularCategory(
         )
         TextButton(
             onClick = {
-                      onNavigate(Screen.PopularCategoryListScreen.route)
+                onNavigate(Screen.PopularCategoryListScreen.route)
             },
             modifier = Modifier.offset(y = 15.dp),
             contentPadding = PaddingValues(0.dp)
@@ -104,7 +107,7 @@ fun CategoryCard(
                 .clickable {
                     onNavigate(Screen.SearchScreen.route)
                 }
-        ){
+        ) {
             Image(
                 painter = rememberAsyncImagePainter(
                     model = category.categoryImageUrl,
@@ -114,17 +117,18 @@ fun CategoryCard(
                 contentScale = ContentScale.Crop,
                 modifier = Modifier.fillMaxSize()
             )
-            Box(modifier = modifier
-                .fillMaxSize()
-                .background(
-                    brush = Brush.verticalGradient(
-                        colors = listOf(
-                            Color.Transparent,
-                            Color.Black
-                        ),
-                        startY = 200f
+            Box(
+                modifier = modifier
+                    .fillMaxSize()
+                    .background(
+                        brush = Brush.verticalGradient(
+                            colors = listOf(
+                                Color.Transparent,
+                                Color.Black
+                            ),
+                            startY = 200f
+                        )
                     )
-                )
             )
             Box(
                 modifier = modifier
@@ -132,10 +136,12 @@ fun CategoryCard(
                     .padding(18.dp),
                 contentAlignment = Alignment.BottomStart
             ) {
-                Text(text = category.categoryName, style = TextStyle(
-                    color = Color.White,
-                    fontSize = 14.sp
-                ), fontWeight = FontWeight.Bold)
+                Text(
+                    text = category.categoryName, style = TextStyle(
+                        color = Color.White,
+                        fontSize = 14.sp
+                    ), fontWeight = FontWeight.Bold
+                )
             }
         }
     }
@@ -158,7 +164,7 @@ fun MostWatchedCourses(
         )
         TextButton(
             onClick = {
-                      onNavigate(Screen.MostWatchedCourseListScreen.route)
+                onNavigate(Screen.MostWatchedCourseListScreen.route)
             },
             modifier = Modifier.offset(y = 15.dp),
             contentPadding = PaddingValues(0.dp)
@@ -184,7 +190,7 @@ fun PreviousWatchedCourses(
         )
         TextButton(
             onClick = {
-                    onNavigate(Screen.MostWatchedCourseListScreen.route)
+                onNavigate(Screen.MostWatchedCourseListScreen.route)
             },
             modifier = Modifier.offset(y = 15.dp),
             contentPadding = PaddingValues(0.dp)
@@ -208,7 +214,7 @@ fun OthersWatchedCourses(onNavigate: (String) -> Unit) {
         )
         TextButton(
             onClick = {
-                      onNavigate(Screen.MostWatchedCourseListScreen.route)
+                onNavigate(Screen.MostWatchedCourseListScreen.route)
             },
             modifier = Modifier.offset(y = 15.dp),
             contentPadding = PaddingValues(0.dp)
@@ -239,7 +245,7 @@ fun CourseOverviewCard(
                     .clickable {
                         onClick(Screen.CourseDetailScreen.route + "/${course.courseId}")
                     }
-            ){
+            ) {
                 Image(
                     painter = rememberAsyncImagePainter(
                         model = course.courseThumbnailUrl,
@@ -274,7 +280,11 @@ fun CourseOverviewCard(
             Column(
                 modifier = modifier.fillMaxWidth()
             ) {
-                Text(text = course.courseName, fontWeight = FontWeight.Bold, color = Color(0XFF282F3E))
+                Text(
+                    text = course.courseName,
+                    fontWeight = FontWeight.Bold,
+                    color = Color(0XFF282F3E)
+                )
                 Spacer(modifier = Modifier.height(8.dp))
                 Text(text = course.courseTeacherName, color = Color(0XFF585D69), fontSize = 12.sp)
                 Spacer(modifier = Modifier.height(8.dp))
@@ -286,12 +296,17 @@ fun CourseOverviewCard(
                 ) {
                     Row(
                         modifier = modifier.fillMaxHeight(),
-                        verticalAlignment = Alignment.CenterVertically) {
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
                         Text(text = course.rating.toString(), color = Grey400, fontSize = 11.sp)
                         Spacer(modifier = Modifier.width(6.dp))
                         RatingRow(rating = course.rating.toInt(), size = 15)
                     }
-                    Text(text ="(${course.noOfStudentRated.toString()})", color = Grey400 , fontSize = 11.sp)
+                    Text(
+                        text = "(${course.noOfStudentRated.toString()})",
+                        color = Grey400,
+                        fontSize = 11.sp
+                    )
                 }
             }
         }

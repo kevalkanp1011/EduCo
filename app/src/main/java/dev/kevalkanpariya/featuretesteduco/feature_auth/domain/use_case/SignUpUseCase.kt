@@ -3,8 +3,9 @@ package dev.kevalkanpariya.featuretesteduco.feature_auth.domain.use_case
 import dev.kevalkanpariya.featuretesteduco.core.domain.util.ValidationUtil
 import dev.kevalkanpariya.featuretesteduco.feature_auth.domain.models.SignUpResult
 import dev.kevalkanpariya.featuretesteduco.feature_auth.domain.repository.AuthRepository
+import javax.inject.Inject
 
-class SignUpUseCase(
+class SignUpUseCase @Inject constructor(
     private val repository: AuthRepository
 ) {
 

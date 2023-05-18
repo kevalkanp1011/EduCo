@@ -53,7 +53,7 @@ fun SignInScreen(
                 is UiEvent.OnSignIn -> {
                     onSignIn()
                 }
-                else -> {}
+                else -> Unit
             }
         }
     }

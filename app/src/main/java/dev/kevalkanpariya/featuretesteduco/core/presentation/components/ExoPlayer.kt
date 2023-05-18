@@ -68,8 +68,11 @@ fun VideoView(videoUri: String) {
 @Preview
 @Composable
 fun  TestExoPlayer() {
-    Column(modifier = Modifier.padding(20.dp)) {
-        VideoView(videoUri = "https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4")
+    Column(
+        modifier = Modifier
+            .padding(20.dp)
+    ) {
+        VideoView(videoUri = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4")
         Spacer(modifier = Modifier.height(10.dp))
         Text(text = "Video Player")
     }

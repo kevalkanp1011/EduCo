@@ -22,5 +22,4 @@ class SearchViewModel @Inject constructor(
         get() = _discoverCourses.asStateFlow()
 
 
-
 }

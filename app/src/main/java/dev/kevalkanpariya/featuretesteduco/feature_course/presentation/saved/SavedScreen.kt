@@ -25,10 +25,10 @@ import dev.kevalkanpariya.featuretesteduco.ui.theme.Grey50
 fun SavedScreen(
     imageLoader: ImageLoader,
     onNavigate: (String) -> Unit,
-    viewModel: SavedViewModel = hiltViewModel()
+    //viewModel: SavedViewModel = hiltViewModel()
 ) {
 
-    val bookmarkState = viewModel.bookmarkedCourses.collectAsState().value
+    //val bookmarkState = viewModel.bookmarkedCourses.collectAsState().value
 
     Column(
         modifier = Modifier
@@ -45,14 +45,14 @@ fun SavedScreen(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(50.dp)
         ) {
-            bookmarkState.courses?.let {
+            /*bookmarkState.courses?.let {
                 items(it) { course ->
                     CourseItem(
                         course = course,
                         imageLoader = imageLoader
                     )
                 }
-            }
+            }*/
 
             item {
                 Button(

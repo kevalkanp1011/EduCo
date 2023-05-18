@@ -1,6 +1,6 @@
 package dev.kevalkanpariya.featuretesteduco.core.domain.models
 
-enum class FileType {
-    img,
-    pdf
+enum class FileType(val type: String) {
+    IMG(".img"),
+    PDF(".pdf")
 }

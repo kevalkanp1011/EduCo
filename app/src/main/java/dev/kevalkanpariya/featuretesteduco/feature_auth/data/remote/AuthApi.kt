@@ -30,6 +30,6 @@ interface AuthApi {
     suspend fun authenticate()
 
     companion object {
-        const val BASE_URL = "http://192.168.138.154:8080/"
+        const val BASE_URL = "Your_Base_Url"
     }
 }

@@ -49,7 +49,6 @@ fun EditProfileScreen(
     val launcher = rememberLauncherForActivityResult(contract = ActivityResultContracts.GetContent()) { uri ->
         viewModel.selectedImageUri.value = uri
     }
-    val profileSettingData = viewModel.profileSettingsState.value
 
     val focusRequester = remember {
         FocusRequester()
@@ -136,7 +135,7 @@ fun EditProfileScreen(
             ) {
                 Icon(painter = painterResource(id = R.drawable.ic_profile), contentDescription = "person logo")
                 StandardTextField(
-                    text = profileSettingData.profileSettingsData?.bio?: "",
+                    text = viewModel.bioState.value.text,
                     hint = "bio",
                     maxLength = 10,
                     onValueChange = {
@@ -153,7 +152,7 @@ fun EditProfileScreen(
             ) {
                 Icon(painter = painterResource(id = R.drawable.ic_profile), contentDescription = "person logo")
                 StandardTextField(
-                    text = profileSettingData.profileSettingsData?.username?: "",
+                    text = viewModel.usernameState.value.text,
                     hint = "username",
                     maxLength = 10,
                     onValueChange = {
@@ -162,6 +161,7 @@ fun EditProfileScreen(
                     backgroundColor = Color.White,
                     modifier = Modifier
                         .fillMaxWidth(),
+                    focusRequester = focusRequester
                 )
             }
             Row(
@@ -170,7 +170,7 @@ fun EditProfileScreen(
             ) {
                 Image(painter = painterResource(id = R.drawable.ic_facebook), contentDescription = "person logo")
                 StandardTextField(
-                    text = profileSettingData.profileSettingsData?.facebookUrl?: "",
+                    text = viewModel.facebookUrlState.value.text,
                     hint = "facebook url",
                     maxLength = 10,
                     onValueChange = {
@@ -187,7 +187,7 @@ fun EditProfileScreen(
             ) {
                 Image(painter = painterResource(id = R.drawable.ic_twitter), contentDescription = "person logo")
                 StandardTextField(
-                    text = profileSettingData.profileSettingsData?.twitterUrl ?: "",
+                    text = viewModel.twitterUrlState.value.text,
                     hint = "twitter url",
                     maxLength = 10,
                     onValueChange = {
@@ -204,7 +204,7 @@ fun EditProfileScreen(
             ) {
                 Image(painter = painterResource(id = R.drawable.ic_instagram), contentDescription = "person logo")
                 StandardTextField(
-                    text = profileSettingData.profileSettingsData?.twitterUrl ?: "",
+                    text = viewModel.instagramUrlState.value.text,
                     hint = "instagram url",
                     maxLength = 10,
                     onValueChange = {

@@ -64,7 +64,6 @@ fun Navigation(
 
         composable(Screen.SignUpScreen.route) {
             SignUpScreen(
-                navController = navController,
                 scaffoldState = scaffoldState,
                 onPopBackStack = navController::popBackStack
             )
@@ -92,7 +91,7 @@ fun Navigation(
                 onNavigateUp = navController::navigateUp,
                 imageLoader = imageLoader,
 
-            )
+                )
         }
 
 
@@ -142,7 +141,10 @@ fun Navigation(
         }
 
         composable(Screen.SavedScreen.route) {
-            SavedScreen(imageLoader = imageLoader, onNavigate = navController::navigate)
+            SavedScreen(
+                imageLoader = imageLoader,
+                onNavigate = navController::navigate
+            )
         }
 
         composable(

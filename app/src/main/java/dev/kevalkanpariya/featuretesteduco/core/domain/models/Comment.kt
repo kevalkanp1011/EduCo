@@ -10,3 +10,13 @@ data class Comment(
     val isLiked: Boolean,
     val likeCount: Int
 )
+
+data class NewComment(
+    val commentId: String,
+    val username: String,
+    val profilePictureUrl: String,
+    val formattedTime: String,
+    val comment: String,
+    val isLiked: Boolean,
+    val likeCount: Int
+)

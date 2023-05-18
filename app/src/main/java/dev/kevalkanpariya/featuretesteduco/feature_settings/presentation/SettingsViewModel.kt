@@ -159,6 +159,15 @@ class SettingsViewModel @Inject constructor(
 
             is SettingsEvent.Save -> {
                 viewModelScope.launch {
+                    _profileSettingsState.value = profileSettingsState.value.copy(
+                        profileSettingsData = UpdateProfileData(
+                            username = usernameState.value.text,
+                            bio = bioState.value.text,
+                            instagramUrl = instagramUrlState.value.text,
+                            facebookUrl = facebookUrlState.value.text,
+                            twitterUrl = twitterUrlState.value.text
+                        )
+                    )
                     val result = profileSettingsState.value.profileSettingsData?.let {
                         profileUseCases.updateProfile(
                             updateProfileData = it,

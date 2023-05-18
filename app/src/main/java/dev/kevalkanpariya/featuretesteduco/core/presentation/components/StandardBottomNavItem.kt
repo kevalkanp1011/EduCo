@@ -95,8 +95,8 @@ fun CustomBottomNavigationItem(item: BottomNavBar, isSelected: Boolean, onClick:
             .clickable(onClick = onClick)
     ){
         Row(
-            /*modifier = Modifier
-                .padding(12.dp),*/
+            modifier = Modifier
+                .padding(8.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(4.dp)
         ) {

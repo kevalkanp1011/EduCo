@@ -20,8 +20,33 @@ data class Course(
     val noOfLessons: Int,
     val avgRating: Double,
     val tag: String? = null,
+    val commentCount: Int = 0,
     @Serializable(with = DurationSerializer::class)
-    val duration: Duration? = null,
+    val duration: Duration? = null
+) {
+
+    fun toCourseOverview(): CourseOverviewState {
+        return CourseOverviewState(
+            rating = avgRating,
+            description = description
+        )
+    }
+}
+
+@Serializable
+data class NewCourse(
+    val courseId: String,
+    val ownerUserId: String,
+    val courseTitle: String,
+    val courseThumbnailUrl: String,
+    val courseIntroVideoUrl: String,
+    val description: String,
+    val duration: Long,
+    val noOfLessons: Int,
+    val noOfStudentRated: Int,
+    val noOfStudentEnrolled: Int,
+    val avgRating: Double,
+    val tag: String? = null,
     val commentCount: Int = 0,
 ) {
 
