@@ -8,8 +8,7 @@ EduCo is an online learning app project built with Jetpack Compose
 
 ## ⚙️ Run a Project
 > &#9432;&nbsp;&nbsp; configure Educo Server on Intellij Idea to use educo APIs [Educo Server](https://github.com/keval-kanp-1011/educo-server)
->
->  &#9432;&nbsp;&nbsp;  configure MongoDB server using connection string in the AppModule.kt file [see](https://github.com/keval-kanp-1011/EduCo/tree/master/app/src/main/java/dev/kevalkanpariya/featuretesteduco/di)
+
 
 
 ## Screens
