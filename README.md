@@ -6,11 +6,13 @@ EduCo is an online learning app project built with Jetpack Compose
 [![Dagger Hilt](https://img.shields.io/badge/Dagger%20Hilt-2.44-yellow.svg)](https://dagger.dev/hilt/)
 [![Jetpack Compose](https://img.shields.io/badge/Jetpack%20Compose-2022.10.bom-red.svg)](https://developer.android.com/jetpack/compose)
 
-## Installation Guide
-configure Educo Server on Intellij Idea to run this project
-https://github.com/keval-kanp-1011/educo-server
+## ⚙️ Run a Project
+> &#9432;&nbsp;&nbsp; configure Educo Server on Intellij Idea to use educo APIs [Educo Server](https://github.com/keval-kanp-1011/educo-server)
+>
+>  &#9432;&nbsp;&nbsp;  configure MongoDB server using connection string in the AppModule.kt file [see](https://github.com/keval-kanp-1011/EduCo/tree/master/app/src/main/java/dev/kevalkanpariya/featuretesteduco/di)
 
-## Screen
+
+## Screens
 * Onboarding Screen
 * Login/Register User for Authentication
 * Home Screen
