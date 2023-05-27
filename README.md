@@ -42,6 +42,7 @@ EduCo is an online learning app project built with Jetpack Compose
 https://www.figma.com/file/Q7uBQJUoO6xRpxrZGfYXDL/EduCo
 
 ## Get in touch!
+kevalkanpariya5051@gmail.com
 
 ## License
 This project is licensed under the [MIT License](LICENSE).
