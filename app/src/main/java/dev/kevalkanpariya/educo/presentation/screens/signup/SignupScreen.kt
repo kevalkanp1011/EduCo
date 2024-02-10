@@ -1,11 +1,23 @@
 package dev.kevalkanpariya.educo.presentation.screens.signup
 
-import androidx.compose.foundation.layout.*
-import androidx.compose.material.Scaffold
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -30,10 +42,17 @@ import dev.kevalkanpariya.educo.ui.theme.Shapes
 
 @Preview
 @Composable
+fun PreviewSignUpScreen() {
+    val dummvar = true
+    SignupScreen(isBottomBarVisible = dummvar)
+}
+@Composable
 fun SignupScreen(
     errorText: String? = null,
-    navController: NavHostController = rememberNavController()
+    navController: NavHostController = rememberNavController(),
+    isBottomBarVisible: Boolean = false
 ) {
+
 
     //val isLoading = state.value
     var isLoading by remember { mutableStateOf(false) }
@@ -41,7 +60,6 @@ fun SignupScreen(
     BoxWithConstraints(
         modifier = Modifier
             .fillMaxSize()
-            .padding(horizontal = 20.dp),
     ) {
 
         val constraints = if (minWidth < 600.dp) {
@@ -50,35 +68,42 @@ fun SignupScreen(
             decoupledConstraints(margin = 32.dp) // Landscape constraints
         }
 
-        ConstraintLayout(constraints) {
+        ConstraintLayout(
+            modifier = Modifier
+                .fillMaxSize(), 
+            constraintSet = constraints
+        ) {
 
-            Column(
+            Text(
                 modifier = Modifier.layoutId(titleTextRef),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Text(
-                    text = "Welcome!",
-                    color = Grey900,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 26.sp
-                )
-                Text(
-                    text = "Sign up to continue!",
-                    color = Grey900,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 26.sp
-                )
-            }
+                text = "Welcome!\nSign up to continue!",
+                color = Grey900,
+                fontWeight = FontWeight.Bold,
+                fontSize = 26.sp,
+                textAlign = TextAlign.Center
+            )
 
-            GoogleButton(modifier = Modifier.layoutId(signUpWithGoogleBtnRef), backgroundColor = Grey50) {
+            GoogleButton(
+                modifier = Modifier.layoutId(signUpWithGoogleBtnRef),
+                backgroundColor = Grey50
+            ) {
                 isLoading = true
                 //startForResult.launch(googleSignInClient?.signInIntent)
             }
 
-            FaceBookButton(modifier = Modifier.layoutId(signUpWithFacebookBtnRef), backgroundColor = Grey50) {
+            FaceBookButton(
+                modifier = Modifier.layoutId(signUpWithFacebookBtnRef),
+                backgroundColor = Grey50
+            ) {
             }
 
-            Text(modifier = Modifier.layoutId(orTextRef), text = "or", fontSize = 18.sp, color = Color(0xff585D69), textAlign = TextAlign.Center)
+            Text(
+                modifier = Modifier.layoutId(orTextRef),
+                text = "or",
+                fontSize = 18.sp,
+                color = Color(0xff585D69),
+                textAlign = TextAlign.Center
+            )
 
 
             Surface(
@@ -132,8 +157,8 @@ fun SignupScreen(
             TextButton(
                 modifier = Modifier.layoutId(navigateToSignInBtnRef),
                 onClick = {
-                navController.navigate(Screen.Home.route)
-            }) {
+                    navController.navigate(Screen.Home.route)
+                }) {
                 Text(
                     text = "Sign in",
                     color = Primary600,
@@ -146,11 +171,23 @@ fun SignupScreen(
                 Text(text = it)
             }
 
-        }
+            if (isBottomBarVisible) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(50.dp)
+                        .background(Color.Black)
+                        .layoutId(bottomBarRef)
+                ) {
+                    Text(text = "sample bottom bar box", color = Color.White)
+                }
+            }
+
+
 
         }
 
-
+    }
 
 
 }
@@ -169,6 +206,7 @@ private fun decoupledConstraints(
         val termsAndCondText = createRefFor(termsAndCondTextRef)
         val alreadyHaveAnAcctText = createRefFor(alreadyHaveAnAcctTextRef)
         val navigateToSignInBtn = createRefFor(navigateToSignInBtnRef)
+        val bottomBar = createRefFor(bottomBarRef)
 
 
 
@@ -211,7 +249,7 @@ private fun decoupledConstraints(
         }
 
         constrain(alreadyHaveAnAcctText) {
-            top.linkTo(termsAndCondText.bottom, 77.dp)
+            top.linkTo(termsAndCondText.bottom, 70.dp)
             start.linkTo(parent.start)
             end.linkTo(parent.end)
         }
@@ -220,6 +258,12 @@ private fun decoupledConstraints(
             top.linkTo(alreadyHaveAnAcctText.bottom, 10.dp)
             start.linkTo(parent.start)
             end.linkTo(parent.end)
+        }
+
+        constrain(bottomBar) {
+            start.linkTo(parent.start)
+            end.linkTo(parent.end)
+            bottom.linkTo(parent.bottom, 0.dp)
         }
 
     }
@@ -234,3 +278,4 @@ private const val signUpWithEmailBtnRef = "signup_with_email"
 private const val termsAndCondTextRef = "termsAndCondText"
 private const val alreadyHaveAnAcctTextRef = "alreadyHaveAnAcctText"
 private const val navigateToSignInBtnRef = "navigate_to_sign_in_btn"
+private const val bottomBarRef = "bottom_bar"
