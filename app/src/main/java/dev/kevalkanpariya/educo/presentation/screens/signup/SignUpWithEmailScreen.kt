@@ -197,36 +197,47 @@ private fun decoupledConstraints(
 
         constrain(titleText) {
             top.linkTo(parent.top, margin)
+            start.linkTo(parent.start, margin)
         }
 
         constrain(usernameText) {
             top.linkTo(titleText.bottom, margin)
+            start.linkTo(parent.start)
+            end.linkTo(parent.end)
 
         }
 
         constrain(emailText) {
             top.linkTo(usernameText.bottom, margin)
+            start.linkTo(parent.start)
+            end.linkTo(parent.end)
         }
 
         constrain(passwordText) {
             top.linkTo(emailText.bottom, margin)
+            start.linkTo(parent.start)
+            end.linkTo(parent.end)
         }
 
         constrain(confirmPasswordText) {
             top.linkTo(passwordText.bottom, margin)
+            start.linkTo(parent.start)
+            end.linkTo(parent.end)
         }
 
         constrain(signUpButton) {
             top.linkTo(confirmPasswordText.bottom, margin)
             bottom.linkTo(parent.bottom)
+            start.linkTo(parent.start)
+            end.linkTo(parent.end)
         }
     }
 }
 
 
-const val signUpButtonRef = "sign_up_button"
-const val usernameRef = "username_txt"
-const val emailRef = "email_txt"
-const val passwordRef = "pwd"
-const val confirmPasswordRef = "confirm_pwd"
-const val titleTextRef = "title_txt"
+private const val signUpButtonRef = "sign_up_button"
+private const val usernameRef = "username_txt"
+private const val emailRef = "email_txt"
+private const val passwordRef = "pwd"
+private const val confirmPasswordRef = "confirm_pwd"
+private const val titleTextRef = "title_txt"
