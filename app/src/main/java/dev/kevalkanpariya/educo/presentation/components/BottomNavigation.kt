@@ -15,17 +15,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import dev.kevalkanpariya.educo.navigation.Screen
+import dev.kevalkanpariya.educo.navigation.BottomNavItem
 import dev.kevalkanpariya.educo.ui.theme.Grey700
 
 @Composable
-fun BottomNavigation(
+fun BottomNavigationBar(
     route:String,
-    onItemSelected: (Screen) -> Unit
+    onItemSelected: (BottomNavItem) -> Unit
 ) {
-    val items = Screen.Items.list
+    val items = BottomNavItem.Items.list
 
     Row(
         modifier = Modifier
@@ -35,19 +34,21 @@ fun BottomNavigation(
         horizontalArrangement = Arrangement.SpaceAround,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        /*items.forEach{ item ->
+        items.forEach{ item ->
             BottomNavigationItem(item = item, isSelected = item.route == route) {
                 onItemSelected(item)
             }
-        }*/
+        }
     }
 
 }
 
-/*@Composable
-fun BottomNavigationItem(item: Screen.Items, isSelected: Boolean, onClick: () -> Unit) {
+@Composable
+fun BottomNavigationItem(item: BottomNavItem, isSelected: Boolean, onClick: () -> Unit) {
     val background = if (isSelected) MaterialTheme.colors.primary else Color.Transparent
     val contentColor = if (isSelected) Color.White else MaterialTheme.colors.onBackground
+
+
     
     Box(
         modifier = Modifier
@@ -75,4 +76,3 @@ fun BottomNavigationItem(item: Screen.Items, isSelected: Boolean, onClick: () ->
         }
     }
 }
-*/

@@ -22,13 +22,15 @@ import dev.kevalkanpariya.educo.ui.theme.searchBarbg
 
 @Preview
 @Composable
-fun SearchBar() {
-    var text by remember { mutableStateOf("") }
+fun SearchBar(
+    modifier: Modifier = Modifier,
+    searchText: String = "",
+    onSearchTextChanged: (String) -> Unit = {}
+) {
 
-    TextField(value = text,
-        onValueChange = {
-            text = it
-        },
+    TextField(
+        value = searchText,
+        onValueChange = onSearchTextChanged,
         label = null,
         placeholder = { Text(text = "Search") },
         colors = TextFieldDefaults.textFieldColors(
@@ -36,7 +38,7 @@ fun SearchBar() {
             focusedIndicatorColor = Color.Transparent,
             unfocusedIndicatorColor = Color.Transparent
         ),
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .clip(Shapes.medium),
         trailingIcon = {
