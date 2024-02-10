@@ -8,6 +8,9 @@
       <entry key="SignupForm">
         <State />
       </entry>
+      <entry key="SignupScreen">
+        <State />
+      </entry>
     </value>
   </component>
 </project>
