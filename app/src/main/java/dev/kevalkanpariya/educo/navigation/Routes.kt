@@ -9,4 +9,6 @@ sealed class Routes(val route: String) {
     object SignUpWithEmailScreen: Routes("sign_up_with_email")
     object EnterEmailToGetPasswordScreen: Routes("enter_email_to_get_pwd_screen")
     object ResetPasswordScreen: Routes("reset_pwd")
+
+    object MainScreen: Routes("main")
 }
