@@ -6,7 +6,6 @@ import androidx.activity.compose.setContent
 import androidx.compose.runtime.getValue
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.compose.rememberNavController
-import com.ramcosta.composedestinations.DestinationsNavHost
 import dagger.hilt.android.AndroidEntryPoint
 import dev.kevalkanpariya.educo.navigation.SetUpNavGraph
 import dev.kevalkanpariya.educo.presentation.viewmodel.SplashViewModel
@@ -31,9 +30,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             EduCoTheme {
                 val screen by splashViewModel.startDestination
-                val navcontroller = rememberNavController()
-                //DestinationsNavHost(navGraph = NavGraphs.root)
-                SetUpNavGraph(navController = navcontroller, startDestination = screen)
+                val navController = rememberNavController()
+                SetUpNavGraph(navController = navController, startDestination = screen)
             }
         }
 

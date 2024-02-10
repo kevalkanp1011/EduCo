@@ -11,7 +11,6 @@ sealed class Screen(
     object Profile: Screen(route = "profile_screen", title = "Profile")
     object Details: Screen(route = "details_screen", title =  "Details")
     object Splash: Screen(route = "splash_screen", title =  "Splash")
-    object Login: Screen(route = "login_screen", title =  "Login")
     object Auth: Screen(route = "auth_screen", title =  "Auth")
     object Register: Screen(route = "register_screen", title =  "Register")
     object Welcome: Screen(route = "welcome_screen", title =  "Welcome")

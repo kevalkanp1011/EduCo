@@ -1,4 +1,4 @@
-package dev.kevalkanpariya.educo.presentation.screens
+package dev.kevalkanpariya.educo.presentation.screens.search
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column

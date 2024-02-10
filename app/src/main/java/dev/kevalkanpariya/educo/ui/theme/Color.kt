@@ -1,6 +1,11 @@
 package dev.kevalkanpariya.educo.ui.theme
 
+import androidx.compose.material.Colors
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.DarkGray
+import androidx.compose.ui.graphics.Color.Companion.LightGray
 
 val Purple200 = Color(0xFFBB86FC)
 val Purple500 = Color(0xFF6200EE)
@@ -43,3 +48,54 @@ val Error200 = Color(0xFFFECDCA)
 val Error100 = Color(0xFFFEE4E2)
 
 val searchBarbg = Color(0xFFFFF1F3)
+
+val Colors.splashScreenBackground
+    @Composable
+    get() = if (isLight) Brush.verticalGradient(
+        listOf(
+            Purple700,
+            Purple500
+        )
+    ) else Brush.verticalGradient(
+        listOf(
+            Color.Black,
+            Color.Black
+        )
+    )
+
+val Colors.statusBarColor
+    @Composable
+    get() = if (isLight) Purple700 else Color.Black
+
+val Colors.welcomeScreenBgColor
+    @Composable
+    get() = if (isLight) Color.White else Color.Black
+
+val Colors.titleColor
+    @Composable
+    get() = if (isLight) DarkGray else LightGray
+
+val Colors.descriptionColor
+    @Composable
+    get() = if (isLight) DarkGray.copy(alpha = 0.5f) else LightGray.copy(alpha = 0.5f)
+
+val Colors.activeIndicatorColor
+    @Composable
+    get() = if (isLight) Purple500 else Purple700
+
+val Colors.inactiveIndicatorColor
+    @Composable
+    get() = if (isLight) LightGray else DarkGray
+
+val Colors.buttonBgColor
+    @Composable
+    get() = if (isLight) Purple500 else Purple700
+
+val Colors.topAppBarContentColor
+    @Composable
+    get() = if (isLight) Color.White else LightGray
+
+val Colors.topAppBarBgColor
+    @Composable
+    get() = if (isLight) Purple500 else Color.Black
+

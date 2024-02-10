@@ -6,7 +6,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import dev.kevalkanpariya.educo.domain.DataStoreRepository
+import dev.kevalkanpariya.educo.domain.repository.DataStoreRepository
 import javax.inject.Singleton
 
 @Module

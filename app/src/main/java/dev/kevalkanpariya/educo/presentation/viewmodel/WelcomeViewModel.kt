@@ -6,7 +6,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dev.kevalkanpariya.educo.domain.DataStoreRepository
+import dev.kevalkanpariya.educo.domain.repository.DataStoreRepository
 import dev.kevalkanpariya.educo.navigation.Screen
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -27,7 +27,7 @@ class WelcomeViewModel @Inject constructor(
         viewModelScope.launch {
             repository.readOnBoardingState().collect { completed ->
                 if (completed) {
-                    _startDestination.value = Screen.Auth.route
+                    _startDestination.value = Screen.Home.route
                 } else {
                     _startDestination.value = Screen.Welcome.route
                 }
