@@ -27,7 +27,8 @@ import dev.kevalkanpariya.educo.ui.theme.Primary600
 @Preview
 @Composable
 fun SearchFilterScreen(
-
+    onNavigateUp: () -> Unit = {},
+    onNavigate: (String) -> Unit = {}
 ) {
 
     val scrollState = rememberScrollState()
@@ -67,6 +68,7 @@ fun SearchFilterScreen(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Checkbox(
+                        modifier = Modifier.offset(x = (-12).dp),
                         checked = freeClassesCheckedState.value,
                         onCheckedChange = { freeClassesCheckedState.value = it },
                         colors = CheckboxDefaults.colors(checkedColor = Primary500, uncheckedColor = Grey200)
@@ -79,6 +81,7 @@ fun SearchFilterScreen(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Checkbox(
+                        modifier = Modifier.offset(x = (-12).dp),
                         checked = freeClassesCheckedState.value,
                         onCheckedChange = { freeClassesCheckedState.value = it },
                         colors = CheckboxDefaults.colors(checkedColor = Primary500, uncheckedColor = Grey200)
@@ -90,6 +93,7 @@ fun SearchFilterScreen(
                     .layoutId(AllClassesFilterRef),
                     verticalAlignment = Alignment.CenterVertically) {
                     Checkbox(
+                        modifier = Modifier.offset(x = (-12).dp),
                         checked = freeClassesCheckedState.value,
                         onCheckedChange = { freeClassesCheckedState.value = it },
                         colors = CheckboxDefaults.colors(checkedColor = Primary500, uncheckedColor = Grey200)
@@ -103,6 +107,7 @@ fun SearchFilterScreen(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Checkbox(
+                        modifier = Modifier.offset(x = (-12).dp),
                         checked = freeClassesCheckedState.value,
                         onCheckedChange = { freeClassesCheckedState.value = it },
                         colors = CheckboxDefaults.colors(checkedColor = Primary500, uncheckedColor = Grey200)
@@ -115,6 +120,7 @@ fun SearchFilterScreen(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Checkbox(
+                        modifier = Modifier.offset(x = (-12).dp),
                         checked = freeClassesCheckedState.value,
                         onCheckedChange = { freeClassesCheckedState.value = it },
                         colors = CheckboxDefaults.colors(checkedColor = Primary500, uncheckedColor = Grey200)
@@ -127,6 +133,7 @@ fun SearchFilterScreen(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Checkbox(
+                        modifier = Modifier.offset(x = (-12).dp),
                         checked = freeClassesCheckedState.value,
                         onCheckedChange = { freeClassesCheckedState.value = it },
                         colors = CheckboxDefaults.colors(checkedColor = Primary500, uncheckedColor = Grey200)
@@ -134,24 +141,39 @@ fun SearchFilterScreen(
                     Text(text = "Advance")
                 }
                 Text(text = "Duration")
-                Row(verticalAlignment = Alignment.CenterVertically) {
+                Row(
+                    modifier = Modifier
+                        .layoutId(ZeroToOneDurationFilterRef),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
                     Checkbox(
+                        modifier = Modifier.offset(x = (-12).dp),
                         checked = freeClassesCheckedState.value,
                         onCheckedChange = { freeClassesCheckedState.value = it },
                         colors = CheckboxDefaults.colors(checkedColor = Primary500, uncheckedColor = Grey200)
                     )
                     Text(text = "0-1 Hour")
                 }
-                Row(verticalAlignment = Alignment.CenterVertically) {
+                Row(
+                    modifier = Modifier
+                        .layoutId(OneToThreeDurationFilterRef),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
                     Checkbox(
+                        modifier = Modifier.offset(x = (-12).dp),
                         checked = freeClassesCheckedState.value,
                         onCheckedChange = { freeClassesCheckedState.value = it },
                         colors = CheckboxDefaults.colors(checkedColor = Primary500, uncheckedColor = Grey200)
                     )
                     Text(text = "1-3 Hour")
                 }
-                Row(verticalAlignment = Alignment.CenterVertically) {
+                Row(
+                    modifier = Modifier
+                        .layoutId(ThreePlusDurationFilterRef),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
                     Checkbox(
+                        modifier = Modifier.offset(x = (-12).dp),
                         checked = freeClassesCheckedState.value,
                         onCheckedChange = { freeClassesCheckedState.value = it },
                         colors = CheckboxDefaults.colors(checkedColor = Primary500, uncheckedColor = Grey200)
@@ -215,6 +237,9 @@ private fun decoupledConstraints(
 
         val btnRow = createRefFor(btnRowRef)
         val filterColumn = createRefFor(filterColumnRef)
+        val freeClassesChxBx = createRefFor(FreeClassesFilterRef)
+        val premiumClassesChxBx = createRefFor(PremiumClassesFilterRef)
+        val allClassesChxBx = createRefFor(AllClassesFilterRef)
 
 
         constrain(filterColumn) {
@@ -223,8 +248,19 @@ private fun decoupledConstraints(
             //end.linkTo(parent.end,  20.dp)
         }
 
-        constrain(btnRow) {
+        constrain(freeClassesChxBx) {
+            //top.linkTo(filterColumn.top, 20.dp)
+            start.linkTo(filterColumn.start, (-10).dp)
+            //end.linkTo(parent.end,  20.dp)
+        }
 
+        constrain(premiumClassesChxBx) {
+            //top.linkTo(filterColumn.top, 20.dp)
+            start.linkTo(filterColumn.start)
+            //end.linkTo(parent.end,  20.dp)
+        }
+
+        constrain(btnRow) {
             bottom.linkTo(parent.bottom, 20.dp)
             start.linkTo(parent.start)
             end.linkTo(parent.end)
@@ -246,3 +282,7 @@ private const val AllClassesFilterRef = "all_classes_filter"
 private const val BeginnerLevelFilterRef = "beginner_filter"
 private const val IntermediateLevelFilterRef = "premium_classes_filter"
 private const val AdvanceLevelFilterRef = "premium_classes_filter"
+
+private const val ZeroToOneDurationFilterRef = "zero_to_one_duration"
+private const val OneToThreeDurationFilterRef = "one_to_three_duration"
+private const val ThreePlusDurationFilterRef = "three_plus_duration"
