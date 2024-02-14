@@ -1,8 +1,13 @@
 package dev.kevalkanpariya.educo.presentation.screens
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.PageSize
+import androidx.compose.foundation.pager.PagerState
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material.*
 import androidx.compose.material.ButtonDefaults.buttonColors
 import androidx.compose.runtime.Composable
@@ -16,14 +21,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
-import com.google.accompanist.pager.*
 import dev.kevalkanpariya.educo.domain.model.keval
 import dev.kevalkanpariya.educo.presentation.viewmodel.SharedViewModel
 import dev.kevalkanpariya.educo.presentation.viewmodel.WelcomeViewModel
 import dev.kevalkanpariya.educo.ui.theme.*
 import dev.kevalkanpariya.educo.utils.OnBoardingPage
 
-@OptIn(ExperimentalPagerApi::class)
+
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun WelcomeScreen(
     navController: NavHostController,
@@ -35,7 +40,9 @@ fun WelcomeScreen(
         OnBoardingPage.Second,
         OnBoardingPage.Third
     )
-    val pagerState = rememberPagerState()
+    val pagerState = rememberPagerState {
+        pages.size
+    }
 
     Column(
         modifier = Modifier
@@ -55,20 +62,20 @@ fun WelcomeScreen(
             }
         }
         HorizontalPager(
-            count = pages.size,
             state = pagerState,
             verticalAlignment = Alignment.Top,
             modifier = Modifier.weight(10f)
         ) { position ->
             PagerScreen(onBoardingPage = pages[position])
         }
-        HorizontalPagerIndicator(
-            modifier = Modifier
-                .align(Alignment.CenterHorizontally)
-                .weight(1f),
-            pagerState = pagerState,
 
-        )
+//        HorizontalPagerIndicator(
+//            modifier = Modifier
+//                .align(Alignment.CenterHorizontally)
+//                .weight(1f),
+//            pagerState = pagerState,
+//
+//        )
         NavigationButton(
             modifier = Modifier.weight(1f),
             pagerState = pagerState,
@@ -125,7 +132,8 @@ fun PagerScreen(onBoardingPage: OnBoardingPage) {
 }
 
 
-@OptIn(ExperimentalPagerApi::class)
+
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun NavigationButton(
     modifier: Modifier,

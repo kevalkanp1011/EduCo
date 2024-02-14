@@ -1,6 +1,6 @@
 package dev.kevalkanpariya.educo.navigation
 
-import androidx.compose.material.Text
+
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController

@@ -1,24 +1,34 @@
 package dev.kevalkanpariya.educo.presentation.screens
 
-import androidx.annotation.FloatRange
-import androidx.annotation.IntRange
-import androidx.compose.foundation.gestures.FlingBehavior
-import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults.buttonColors
-import androidx.compose.material.icons.Icons
-import androidx.compose.runtime.*
-import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.google.accompanist.pager.*
 import dev.kevalkanpariya.educo.R
-import dev.kevalkanpariya.educo.ui.theme.*
-import kotlinx.coroutines.launch
+import dev.kevalkanpariya.educo.ui.theme.Grey50
+import dev.kevalkanpariya.educo.ui.theme.Grey500
+import dev.kevalkanpariya.educo.ui.theme.Grey700
+import dev.kevalkanpariya.educo.ui.theme.Grey800
+import dev.kevalkanpariya.educo.ui.theme.Grey900
+import dev.kevalkanpariya.educo.ui.theme.subheadline_medium
+import dev.kevalkanpariya.educo.ui.theme.title2
+import dev.kevalkanpariya.educo.ui.theme.title3_normal
 
 @Preview
 @Composable

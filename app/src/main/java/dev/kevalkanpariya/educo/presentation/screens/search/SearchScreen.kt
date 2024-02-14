@@ -48,6 +48,7 @@ import dev.kevalkanpariya.educo.domain.model.CourseCategory
 import dev.kevalkanpariya.educo.navigation.Routes
 import dev.kevalkanpariya.educo.presentation.components.BottomNavigationBar
 import dev.kevalkanpariya.educo.presentation.components.CourseCard
+import dev.kevalkanpariya.educo.presentation.components.ScaffoldWithBottomBar
 import dev.kevalkanpariya.educo.presentation.components.SearchBar
 import dev.kevalkanpariya.educo.ui.theme.Grey600
 import timber.log.Timber
@@ -263,61 +264,7 @@ private fun decoupledConstraints(
     }
 }
 
-@Composable
-@UiComposable
-fun ScaffoldWithBottomBar(
-    bottomBar: @Composable @UiComposable () -> Unit ={},
-    content: @Composable @UiComposable (PaddingValues) -> Unit ={},
 
-) {
-
-    SubcomposeLayout { constraints ->
-        val layoutWidth = constraints.maxWidth
-        val layoutHeight = constraints.maxHeight
-
-        Log.d("EducoMMMM","$layoutHeight  $layoutWidth")
-
-        val looseConstraints = constraints.copy(minWidth = 0, minHeight = 0)
-
-        layout(layoutWidth, layoutHeight) {
-            val bottomBarPlaceables = subcompose("bottombar") {
-                CompositionLocalProvider(
-                    content = bottomBar
-                )
-            }.fastMap { it.measure(looseConstraints) }
-
-            val bottomBarHeight = bottomBarPlaceables.fastMaxBy { it.height }?.height ?: 0
-
-            // The bottom bar is always at the bottom of the layout
-            bottomBarPlaceables.fastForEach {
-                it.place(0, layoutHeight - bottomBarHeight)
-            }
-
-            val bodyContentHeight = layoutHeight
-
-            val bodyContentPlaceables = subcompose("maincontent") {
-                val insets = contentWindowInsets.asPaddingValues(this@SubcomposeLayout)
-                val innerPadding = PaddingValues(
-                    top = insets.calculateTopPadding(),
-                    bottom =
-                    if (bottomBarPlaceables.isEmpty()) {
-                        insets.calculateBottomPadding()
-                    } else {
-                        bottomBarHeight.toDp()
-                    },
-                    start = insets.calculateStartPadding((this@SubcomposeLayout).layoutDirection),
-                    end = insets.calculateEndPadding((this@SubcomposeLayout).layoutDirection)
-                )
-                content(innerPadding)
-            }.fastMap { it.measure(looseConstraints.copy(maxHeight = bodyContentHeight)) }
-
-            // Placing to control drawing order to match default elevation of each placeable
-            bodyContentPlaceables.fastForEach {
-                it.place(0, 0)
-            }
-        }
-    }
-}
 
 private const val searchBarRef = "searchbar"
 private const val topSearchTitleRef = "top_search_title"
