@@ -33,7 +33,22 @@ fun SearchFilterScreen(
 
     val scrollState = rememberScrollState()
 
+    //Classes
     val freeClassesCheckedState = remember { mutableStateOf(false) }
+    val premiumClassesCheckedState = remember { mutableStateOf(false) }
+    val allClassesCheckedState = remember { mutableStateOf(false) }
+
+    //Level
+    val BeginnerLevelCheckedState = remember { mutableStateOf(false) }
+    val IntermediateLevelCheckedState = remember { mutableStateOf(false) }
+    val AdvanceCheckedState = remember { mutableStateOf(false) }
+
+    //Duration
+    
+    val ZeroToOneDurationCheckedState = remember { mutableStateOf(false) }
+    val OneToThreeDurationCheckedState = remember { mutableStateOf(false) }
+    val ThreePlusDurationCheckedState = remember { mutableStateOf(false) }
+
 
     BoxWithConstraints(
         modifier = Modifier
@@ -82,8 +97,8 @@ fun SearchFilterScreen(
                 ) {
                     Checkbox(
                         modifier = Modifier.offset(x = (-12).dp),
-                        checked = freeClassesCheckedState.value,
-                        onCheckedChange = { freeClassesCheckedState.value = it },
+                        checked = premiumClassesCheckedState.value,
+                        onCheckedChange = { premiumClassesCheckedState.value = it },
                         colors = CheckboxDefaults.colors(checkedColor = Primary500, uncheckedColor = Grey200)
                     )
                     Text(text = "Premium Classes")
@@ -94,8 +109,8 @@ fun SearchFilterScreen(
                     verticalAlignment = Alignment.CenterVertically) {
                     Checkbox(
                         modifier = Modifier.offset(x = (-12).dp),
-                        checked = freeClassesCheckedState.value,
-                        onCheckedChange = { freeClassesCheckedState.value = it },
+                        checked = allClassesCheckedState.value,
+                        onCheckedChange = { allClassesCheckedState.value = it },
                         colors = CheckboxDefaults.colors(checkedColor = Primary500, uncheckedColor = Grey200)
                     )
                     Text(text = "All")
@@ -108,8 +123,8 @@ fun SearchFilterScreen(
                 ) {
                     Checkbox(
                         modifier = Modifier.offset(x = (-12).dp),
-                        checked = freeClassesCheckedState.value,
-                        onCheckedChange = { freeClassesCheckedState.value = it },
+                        checked = BeginnerLevelCheckedState.value,
+                        onCheckedChange = { BeginnerLevelCheckedState.value = it },
                         colors = CheckboxDefaults.colors(checkedColor = Primary500, uncheckedColor = Grey200)
                     )
                     Text(text = "Beginner")
@@ -121,8 +136,8 @@ fun SearchFilterScreen(
                 ) {
                     Checkbox(
                         modifier = Modifier.offset(x = (-12).dp),
-                        checked = freeClassesCheckedState.value,
-                        onCheckedChange = { freeClassesCheckedState.value = it },
+                        checked = IntermediateLevelCheckedState.value,
+                        onCheckedChange = { IntermediateLevelCheckedState.value = it },
                         colors = CheckboxDefaults.colors(checkedColor = Primary500, uncheckedColor = Grey200)
                     )
                     Text(text = "Intermidiate")
@@ -134,8 +149,8 @@ fun SearchFilterScreen(
                 ) {
                     Checkbox(
                         modifier = Modifier.offset(x = (-12).dp),
-                        checked = freeClassesCheckedState.value,
-                        onCheckedChange = { freeClassesCheckedState.value = it },
+                        checked = AdvanceCheckedState.value,
+                        onCheckedChange = { AdvanceCheckedState.value = it },
                         colors = CheckboxDefaults.colors(checkedColor = Primary500, uncheckedColor = Grey200)
                     )
                     Text(text = "Advance")
@@ -148,8 +163,8 @@ fun SearchFilterScreen(
                 ) {
                     Checkbox(
                         modifier = Modifier.offset(x = (-12).dp),
-                        checked = freeClassesCheckedState.value,
-                        onCheckedChange = { freeClassesCheckedState.value = it },
+                        checked = ZeroToOneDurationCheckedState.value,
+                        onCheckedChange = { ZeroToOneDurationCheckedState.value = it },
                         colors = CheckboxDefaults.colors(checkedColor = Primary500, uncheckedColor = Grey200)
                     )
                     Text(text = "0-1 Hour")
@@ -161,8 +176,8 @@ fun SearchFilterScreen(
                 ) {
                     Checkbox(
                         modifier = Modifier.offset(x = (-12).dp),
-                        checked = freeClassesCheckedState.value,
-                        onCheckedChange = { freeClassesCheckedState.value = it },
+                        checked = OneToThreeDurationCheckedState.value,
+                        onCheckedChange = { OneToThreeDurationCheckedState.value = it },
                         colors = CheckboxDefaults.colors(checkedColor = Primary500, uncheckedColor = Grey200)
                     )
                     Text(text = "1-3 Hour")
@@ -174,8 +189,8 @@ fun SearchFilterScreen(
                 ) {
                     Checkbox(
                         modifier = Modifier.offset(x = (-12).dp),
-                        checked = freeClassesCheckedState.value,
-                        onCheckedChange = { freeClassesCheckedState.value = it },
+                        checked = ThreePlusDurationCheckedState.value,
+                        onCheckedChange = { ThreePlusDurationCheckedState.value = it },
                         colors = CheckboxDefaults.colors(checkedColor = Primary500, uncheckedColor = Grey200)
                     )
                     Text(text = "3+ Hour")
