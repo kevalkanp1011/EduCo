@@ -55,8 +55,6 @@ fun BottomNavigationItem(item: BottomNavItem, isSelected: Boolean, onClick: () -
             .clickable(onClick = onClick)
     ){
         Row(
-            /*modifier = Modifier
-                .padding(12.dp),*/
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(4.dp)
         ) {

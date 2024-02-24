@@ -1,6 +1,7 @@
 package dev.kevalkanpariya.educo.presentation.screens.student_profile.personal
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -10,22 +11,28 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import dev.kevalkanpariya.educo.domain.model.courses
 import dev.kevalkanpariya.educo.presentation.screens.search.CourseItem
+import dev.kevalkanpariya.educo.presentation.screens.search.CourseOverviewItem
 
 @Preview
 @Composable
-fun Courses() {
+fun Courses(
+    padding: PaddingValues = PaddingValues(horizontal = 20.dp),
+    verticalArrangement: Arrangement.Vertical = Arrangement.spacedBy(20.dp)
+) {
     LazyColumn(
-        Modifier.padding(horizontal = 20.dp),
-        verticalArrangement = Arrangement.spacedBy(20.dp)
+        modifier = Modifier.padding(padding),
+        verticalArrangement = verticalArrangement
     ) {
-        items(courses) {
-                course -> CourseItem(
-            course_title = course.courseTitle,
-            teacher_name = course.course_teacher.name,
-            noOfStudentEnrolled = course.noOfStudentEnrolled,
-            rating = course.rating,
-            image = course.image
-        )
+        items(items = courses, key = { it.id }) { course ->
+            CourseItem(
+                item = CourseOverviewItem(
+                    courseTitle = course.courseTitle,
+                    teacherName = course.course_teacher.name,
+                    noOfStudentEnrolled = course.noOfStudentEnrolled,
+                    rating = course.rating,
+                    imageUrl = ""
+                )
+            )
         }
 
     }

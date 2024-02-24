@@ -9,11 +9,16 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.constraintlayout.compose.ConstraintSet
+import androidx.constraintlayout.compose.Dimension
 import androidx.navigation.NavHostController
 import dev.kevalkanpariya.educo.domain.model.keval
+import dev.kevalkanpariya.educo.navigation.Screen
+import dev.kevalkanpariya.educo.presentation.components.BottomNavigationBar
 import dev.kevalkanpariya.educo.presentation.components.FreeTrial
 import dev.kevalkanpariya.educo.presentation.components.Header
 import dev.kevalkanpariya.educo.presentation.components.PopularCategory3
+import dev.kevalkanpariya.educo.presentation.components.ScaffoldWithBottomBar
 import dev.kevalkanpariya.educo.presentation.components.SearchBar
 import dev.kevalkanpariya.educo.presentation.viewmodel.SharedViewModel
 
@@ -32,23 +37,54 @@ fun HomeScreen(
             Log.d("HomeScreen", user.bio)
         }
     }
-    Column(
-        Modifier
-            .background(Color.White)
-            .padding(top = 30.dp, start = 20.dp, end = 20.dp)) {
-        if (user != null) {
-            Header(user.name, user.avatar)
+
+    ScaffoldWithBottomBar(
+        bottomBar = {
+            BottomNavigationBar(
+                route = Screen.Home.route,
+                onItemSelected = {
+                    navController.navigate(it.route)
+                }
+            )
         }
-        Spacer(modifier = Modifier.height(30.dp))
-        SearchBar()
-        Spacer(modifier = Modifier.height(30.dp))
-        LazyColumn(verticalArrangement = Arrangement.spacedBy(35.dp)){
-            item {
-                PopularCategory3()
+    ) {
+        Column(
+            Modifier
+                .background(Color.White)
+                .padding(top = 30.dp, start = 20.dp, end = 20.dp)
+        ) {
+            if (user != null) {
+                Header(user.name, user.avatar)
             }
-            item {
-                FreeTrial()
+            Spacer(modifier = Modifier.height(30.dp))
+            SearchBar()
+            Spacer(modifier = Modifier.height(30.dp))
+            LazyColumn(
+                verticalArrangement = Arrangement.spacedBy(35.dp)
+            ){
+                item {
+                    PopularCategory3()
+                }
+                item {
+                    FreeTrial()
+                }
             }
         }
+    }
+
+}
+
+
+private fun decoupledConstraints(): ConstraintSet {
+    return ConstraintSet {
+        val searchBar = createRefFor("search_bar")
+        val header = createRefFor("header")
+        val avatar = createRefFor("avatar")
+        val freeTrial = createRefFor("freeTrial")
+
+
+
+
+
     }
 }

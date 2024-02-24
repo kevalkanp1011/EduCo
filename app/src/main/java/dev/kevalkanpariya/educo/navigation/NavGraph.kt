@@ -6,7 +6,6 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import dev.kevalkanpariya.educo.presentation.screens.AuthScreen
 import dev.kevalkanpariya.educo.presentation.screens.HomeScreen
 import dev.kevalkanpariya.educo.presentation.screens.WelcomeScreen
 import dev.kevalkanpariya.educo.presentation.screens.search.SearchScreen
@@ -67,7 +66,7 @@ fun SetUpNavGraph(
             SearchScreen()
         }
         composable("auth_screen") {
-            AuthScreen()
+
         }
     }
 }

@@ -69,6 +69,7 @@ fun SignUpForm(
     onPasswordChanged: (String) -> Unit,
     confirmPassword: String,
     onConfirmPasswordChanged: (String) -> Unit,
+    onContinueButtonClicked: () -> Unit = {}
 ) {
 
     BoxWithConstraints(
@@ -164,7 +165,7 @@ fun SignUpForm(
             )
 
             Button(
-                onClick = { /*TODO*/ },
+                onClick = onContinueButtonClicked,
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(60.dp)

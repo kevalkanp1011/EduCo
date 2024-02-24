@@ -28,18 +28,20 @@ import dev.kevalkanpariya.educo.R
 
 
 @Composable
-fun PopularCategory() {
+fun PopularCategory(
+    onSeeMoreClicked: () -> Unit = {}
+) {
     Row(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Text(
-            text = "Popular Category\nour in plateform",
+            text = "Popular Category\nour in platform",
             style = MaterialTheme.typography.h6,
             color = Grey900
         )
         TextButton(
-            onClick = {},
+            onClick = onSeeMoreClicked,
             modifier = Modifier.offset(y = 15.dp),
             contentPadding = PaddingValues(0.dp)
         ) {
@@ -106,7 +108,7 @@ fun PopularCategory3(){
     Spacer(modifier = Modifier.height(25.dp))
     LazyRow(
         modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.SpaceBetween
+        horizontalArrangement = Arrangement.spacedBy(15.dp)
     ) {
         item {
             CourseCard(

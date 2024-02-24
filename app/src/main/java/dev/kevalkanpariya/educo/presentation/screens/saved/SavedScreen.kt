@@ -6,7 +6,10 @@ import androidx.compose.ui.tooling.preview.Preview
 
 @Preview
 @Composable
-fun SavedScreen() {
+fun SavedScreen(
+    onNavigate: (String) -> Unit = {}
+) {
+
 
 
 }

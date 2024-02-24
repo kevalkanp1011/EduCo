@@ -13,6 +13,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.ConstraintSet
@@ -29,6 +30,27 @@ import dev.kevalkanpariya.educo.ui.theme.Grey800
 
 //StudentProfile
 @Composable
+fun StudentProfile(student: Student) {
+    BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
+
+        val constraints = if (minWidth < 600.dp) {
+            decoupledConstraints(margin = 16.dp) // Portrait constraints
+        } else {
+            decoupledConstraints(margin = 32.dp) // Landscape constraints
+        }
+
+        ConstraintLayout(constraints) {
+            Banner(student)
+            SettingsButton()
+            Avatar(student)
+            ProfileContent(student)
+        }
+
+    }
+}
+
+
+@Composable
 private fun ProfileContent(student: Student) {
     Column(modifier = Modifier.layoutId("content")) {
         Column(
@@ -41,12 +63,21 @@ private fun ProfileContent(student: Student) {
             Spacer(modifier = Modifier.height(15.dp))
             Text(text = student.bio, textAlign = TextAlign.Center)
             Spacer(modifier = Modifier.height(15.dp))
-            
+
             Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                Image(painter = painterResource(id = R.drawable.ic_instagram), contentDescription = "Instagram")
-                Image(painter = painterResource(id = R.drawable.ic_facebook), contentDescription = "Facebook")
-                Image(painter = painterResource(id = R.drawable.ic_twitter), contentDescription = "Twitter")
-                
+                Image(
+                    painter = painterResource(id = R.drawable.ic_instagram),
+                    contentDescription = "Instagram"
+                )
+                Image(
+                    painter = painterResource(id = R.drawable.ic_facebook),
+                    contentDescription = "Facebook"
+                )
+                Image(
+                    painter = painterResource(id = R.drawable.ic_twitter),
+                    contentDescription = "Twitter"
+                )
+
             }
         }
 
@@ -64,7 +95,7 @@ private fun ProfileContent(student: Student) {
                         Column {
                             Text(title, color = Grey700)
                         }
-                           },
+                    },
                     selected = state == index,
                     onClick = { state = index }
                 )
@@ -75,7 +106,6 @@ private fun ProfileContent(student: Student) {
 
     }
 }
-
 
 
 @Composable
@@ -93,21 +123,6 @@ private fun Avatar(student: Student) {
 
 
 @Composable
-fun StudentProfile(student: Student) {
-    BoxWithConstraints {
-        val constraints = decoupledConstraints()
-        ConstraintLayout(constraints) {
-            Banner(student)
-            SettingsButton()
-            Avatar(student)
-            ProfileContent(student)
-
-        }
-    }
-}
-
-
-@Composable
 private fun Banner(student: Student) {
     Image(
         painter = painterResource(student.banner),
@@ -119,6 +134,7 @@ private fun Banner(student: Student) {
         contentScale = ContentScale.Crop
     )
 }
+
 @Composable
 private fun SettingsButton() {
     Icon(
@@ -130,7 +146,9 @@ private fun SettingsButton() {
 }
 
 
-private fun decoupledConstraints(): ConstraintSet {
+private fun decoupledConstraints(
+    margin: Dp
+): ConstraintSet {
     return ConstraintSet {
         val banner = createRefFor("banner")
         val settings = createRefFor("ic_settings")

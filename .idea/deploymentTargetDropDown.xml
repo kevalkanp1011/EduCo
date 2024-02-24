@@ -2,33 +2,23 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="HashTagPreview">
+      <entry key="Courses">
         <State />
       </entry>
-      <entry key="PreviewSignUpScreen">
+      <entry key="HashTagPreview">
         <State />
       </entry>
       <entry key="SearchFilterScreen">
         <State />
       </entry>
+      <entry key="SearchResultScreen">
+        <State />
+      </entry>
       <entry key="SearchScreen">
         <State />
       </entry>
-      <entry key="SignupScreen">
-        <State>
-          <runningDeviceTargetSelectedWithDropDown>
-            <Target>
-              <type value="RUNNING_DEVICE_TARGET" />
-              <deviceKey>
-                <Key>
-                  <type value="SERIAL_NUMBER" />
-                  <value value="6ca1b037" />
-                </Key>
-              </deviceKey>
-            </Target>
-          </runningDeviceTargetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-02-10T17:58:36.968273300Z" />
-        </State>
+      <entry key="app">
+        <State />
       </entry>
     </value>
   </component>
