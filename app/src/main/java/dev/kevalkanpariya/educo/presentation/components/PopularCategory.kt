@@ -29,10 +29,11 @@ import dev.kevalkanpariya.educo.R
 
 @Composable
 fun PopularCategory(
+    modifier: Modifier,
     onSeeMoreClicked: () -> Unit = {}
 ) {
     Row(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Text(
@@ -67,6 +68,7 @@ fun CourseCard(
                 .height(140.dp)
         ){
             Image(
+                modifier = Modifier.fillMaxSize(),
                 painter = imagePainter,
                 contentDescription = "",
                 contentScale = ContentScale.Crop
@@ -101,13 +103,15 @@ fun CourseCard(
     }
 }
 
-@Preview
+
 @Composable
-fun PopularCategory3(){
-    PopularCategory()
+fun PopularCategory3(
+    modifier: Modifier
+){
+    //PopularCategory()
     Spacer(modifier = Modifier.height(25.dp))
     LazyRow(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.spacedBy(15.dp)
     ) {
         item {

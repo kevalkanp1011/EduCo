@@ -11,14 +11,16 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun FreeTrial() {
-    Column(modifier = Modifier
+fun FreeTrial(
+    modifier: Modifier
+) {
+    Column(modifier = modifier
         .fillMaxWidth()
         .background(color = Color(0xFFFFF1F3))
         .padding(20.dp),
         horizontalAlignment = Alignment.CenterHorizontally) {
         Text(text = "Try free trial to enhance\nyour creative journey!",style = MaterialTheme.typography.h6)
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = modifier.height(20.dp))
         Text(text = "Get free trial", color = Color.Blue,style = MaterialTheme.typography.h5)
     }
 }
