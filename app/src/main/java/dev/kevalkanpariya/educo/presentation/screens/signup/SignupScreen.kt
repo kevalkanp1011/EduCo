@@ -46,6 +46,7 @@ fun PreviewSignUpScreen() {
     val dummvar = true
     SignupScreen(isBottomBarVisible = dummvar)
 }
+
 @Composable
 fun SignupScreen(
     errorText: String? = null,
@@ -58,8 +59,7 @@ fun SignupScreen(
     var isLoading by remember { mutableStateOf(false) }
 
     BoxWithConstraints(
-        modifier = Modifier
-            .fillMaxSize()
+        modifier = Modifier.fillMaxSize()
     ) {
 
         val constraints = if (minWidth < 600.dp) {
@@ -69,9 +69,7 @@ fun SignupScreen(
         }
 
         ConstraintLayout(
-            modifier = Modifier
-                .fillMaxSize(), 
-            constraintSet = constraints
+            modifier = Modifier.fillMaxSize(), constraintSet = constraints
         ) {
 
             Text(
@@ -84,18 +82,15 @@ fun SignupScreen(
             )
 
             GoogleButton(
-                modifier = Modifier.layoutId(signUpWithGoogleBtnRef),
-                backgroundColor = Grey50
+                modifier = Modifier.layoutId(signUpWithGoogleBtnRef), backgroundColor = Grey50
             ) {
                 isLoading = true
                 //startForResult.launch(googleSignInClient?.signInIntent)
             }
 
             FaceBookButton(
-                modifier = Modifier.layoutId(signUpWithFacebookBtnRef),
-                backgroundColor = Grey50
-            ) {
-            }
+                modifier = Modifier.layoutId(signUpWithFacebookBtnRef), backgroundColor = Grey50
+            ) {}
 
             Text(
                 modifier = Modifier.layoutId(orTextRef),
@@ -114,21 +109,15 @@ fun SignupScreen(
                 color = Grey50
             ) {
                 Row(
-                    modifier = Modifier
-                        .padding(
-                            start = 12.dp,
-                            end = 16.dp,
-                            top = 12.dp,
-                            bottom = 12.dp
+                    modifier = Modifier.padding(
+                            start = 12.dp, end = 16.dp, top = 12.dp, bottom = 12.dp
                         ),
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.Center
                 ) {
-                    TextButton(
-                        onClick = {
-                            navController.navigate("signup_form")
-                        }
-                    ) {
+                    TextButton(onClick = {
+                        navController.navigate("signup_form")
+                    }) {
                         Text(
                             text = "Sign up with email",
                             color = Grey900,
@@ -154,15 +143,11 @@ fun SignupScreen(
                 textAlign = TextAlign.Center
             )
 
-            TextButton(
-                modifier = Modifier.layoutId(navigateToSignInBtnRef),
-                onClick = {
-                    navController.navigate(Screen.Home.route)
-                }) {
+            TextButton(modifier = Modifier.layoutId(navigateToSignInBtnRef), onClick = {
+                navController.navigate(Screen.Home.route)
+            }) {
                 Text(
-                    text = "Sign in",
-                    color = Primary600,
-                    fontSize = 16.sp
+                    text = "Sign in", color = Primary600, fontSize = 16.sp
                 )
             }
             errorText?.let {
@@ -182,7 +167,6 @@ fun SignupScreen(
                     Text(text = "sample bottom bar box", color = Color.White)
                 }
             }
-
 
 
         }
