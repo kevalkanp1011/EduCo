@@ -1,4 +1,4 @@
-package dev.kevalkanpariya.educo.presentation.auth
+package dev.kevalkanpariya.educo.presentation.screens.auth
 
 import androidx.lifecycle.ViewModel
 
