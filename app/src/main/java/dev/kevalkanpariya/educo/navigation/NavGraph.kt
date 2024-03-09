@@ -7,7 +7,6 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import dev.kevalkanpariya.educo.presentation.screens.home.HomeScreen
-import dev.kevalkanpariya.educo.presentation.screens.WelcomeScreen
 import dev.kevalkanpariya.educo.presentation.screens.search.SearchScreen
 import dev.kevalkanpariya.educo.presentation.screens.signup.SignUpWithEmailScreen
 import dev.kevalkanpariya.educo.presentation.screens.signup.SignupScreen
@@ -22,7 +21,7 @@ fun SetUpNavGraph(
     NavHost(navController = navController, startDestination = startDestination) {
 
         composable(Routes.OnboardingScreen.route) {
-            WelcomeScreen(navController = navController, sharedViewModel)
+            //WelcomeScreen(navController = navController)
         }
 
         composable(Routes.SignInScreen.route) {
@@ -43,14 +42,14 @@ fun SetUpNavGraph(
 
 
         composable(Routes.HomeScreen.route) {
-            HomeScreen(navController = navController, sharedViewModel = sharedViewModel)
+            HomeScreen(navController = navController)
         }
 
         composable("welcome_screen") {
-            WelcomeScreen(navController = navController, sharedViewModel)
+            //OnBoardingScreen(navController = navController)
         }
         composable("home_screen") {
-            HomeScreen(navController = navController, sharedViewModel = sharedViewModel)
+            HomeScreen(navController = navController)
         }
         composable("login_screen") {
             //SignInScreen(onClick = { /*TODO*/ }, errorText = "Account Not Found", navController)
