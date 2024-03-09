@@ -1,12 +1,16 @@
 package dev.kevalkanpariya.educo.presentation.screens.auth
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -26,6 +30,8 @@ import androidx.constraintlayout.compose.ConstraintSet
 import dev.kevalkanpariya.educo.R
 import dev.kevalkanpariya.educo.ui.theme.Grey50
 import dev.kevalkanpariya.educo.ui.theme.Grey500
+import dev.kevalkanpariya.educo.ui.theme.Primary600
+import dev.kevalkanpariya.educo.ui.theme.Shapes
 
 @Preview
 @Composable
@@ -73,17 +79,45 @@ fun CheckYourEmailScreen() {
             )
             
             Button(
-                modifier = Modifier.layoutId(OpenEmailBtnRef),
+                modifier = Modifier
+                    .fillMaxWidth(0.9f)
+                    .height(60.dp)
+                    .layoutId(OpenEmailBtnRef),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Primary600,
+                    contentColor = Color.White
+                ),
+                shape = RoundedCornerShape(6.dp),
                 onClick = { /*TODO*/ }
             ) {
-                Text(text = "Open email app")
+                Text(
+                    text = "Open email app",
+                    color = Color.White,
+                    fontWeight = FontWeight.Medium,
+                    fontSize = 16.sp,
+                    textAlign = TextAlign.Center
+
+                )
             }
 
             Button(
-                modifier = Modifier.layoutId(DoLaterBtnRef),
+                modifier = Modifier
+                    .fillMaxWidth(0.9f)
+                    .height(60.dp)
+                    .layoutId(DoLaterBtnRef),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color.Transparent,
+                    contentColor = Primary600
+                ),
+                shape = RoundedCornerShape(6.dp),
                 onClick = { /*TODO*/ }
             ) {
-                Text(text = "Will do it later")
+                Text(
+                    text = "Will do it later",
+                    fontWeight = FontWeight.Medium,
+                    fontSize = 16.sp,
+                    textAlign = TextAlign.Center
+                )
             }
 
             Text(
