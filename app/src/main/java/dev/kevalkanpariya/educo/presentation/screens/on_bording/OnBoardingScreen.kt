@@ -1,4 +1,4 @@
-package dev.kevalkanpariya.educo.presentation.on_bording
+package dev.kevalkanpariya.educo.presentation.screens.on_bording
 
 import androidx.compose.runtime.Composable
 

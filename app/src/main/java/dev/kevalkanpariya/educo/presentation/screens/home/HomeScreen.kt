@@ -1,4 +1,4 @@
-package dev.kevalkanpariya.educo.presentation.screens
+package dev.kevalkanpariya.educo.presentation.screens.home
 
 import android.util.Log
 import androidx.compose.foundation.background
