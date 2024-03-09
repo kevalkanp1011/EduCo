@@ -8,9 +8,9 @@ import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Text
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
@@ -28,7 +28,6 @@ import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.ConstraintSet
 import dev.kevalkanpariya.educo.R
-import dev.kevalkanpariya.educo.ui.theme.Grey500
 import dev.kevalkanpariya.educo.ui.theme.Primary600
 import dev.kevalkanpariya.educo.ui.theme.Shapes
 import dev.kevalkanpariya.educo.ui.theme.searchBarbg
