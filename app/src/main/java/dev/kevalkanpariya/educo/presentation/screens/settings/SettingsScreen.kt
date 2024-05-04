@@ -9,11 +9,11 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults.buttonColors
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.Text
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults.buttonColors
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -63,7 +63,7 @@ fun SettingsScreen() {
                     Spacer(modifier = Modifier.width(16.dp))
                     Text(text = "Memberships Users", color = Grey700, style = title3_normal)
                 }
-                Button(onClick = { /*TODO*/ }, colors = buttonColors(backgroundColor = Grey50)) {
+                Button(onClick = { /*TODO*/ }, colors = buttonColors(containerColor = Grey50)) {
                     Text(text = "upgrade", color = Grey800, style = subheadline_medium)
                 }
             }
@@ -76,7 +76,7 @@ fun SettingsScreen() {
                     Spacer(modifier = Modifier.width(16.dp))
                     Text(text = "Profile settings", color = Grey700, style = title3_normal)
                 }
-                Button(onClick = { /*TODO*/ }, colors = buttonColors(backgroundColor = Grey50)) {
+                Button(onClick = { /*TODO*/ }, colors = buttonColors(containerColor = Grey50)) {
                     Text(text = "manage", color = Grey800, style = subheadline_medium)
                 }
             }
@@ -99,7 +99,7 @@ fun SettingsScreen() {
                     Spacer(modifier = Modifier.width(16.dp))
                     Text(text = "Password Change", color = Grey700, style = title3_normal)
                 }
-                Button(onClick = { /*TODO*/ }, colors = buttonColors(backgroundColor = Grey50)) {
+                Button(onClick = { /*TODO*/ }, colors = buttonColors(containerColor = Grey50)) {
                     Text(text = "manage", color = Grey800, style = subheadline_medium)
                 }
             }
@@ -149,90 +149,3 @@ fun SettingsScreen() {
         }
     }
 }
-
-/*@OptIn(ExperimentalPagerApi::class)
-@Composable
-fun rememberPagerState(
-    @IntRange(from = 0) pageCount: Int,
-    @IntRange(from = 0) initialPage: Int = 0,
-    @FloatRange(from = 0.0, to = 1.0) initialPageOffset: Float = 0f,
-    @IntRange(from = 1) initialOffscreenLimit: Int = 1,
-    infiniteLoop: Boolean = false
-): PagerState = rememberSaveable(saver = PagerState.Saver) {
-    PagerState(
-        pageCount = pageCount,
-        currentPage = initialPage,
-        currentPageOffset = initialPageOffset,
-        offscreenLimit = initialOffscreenLimit,
-        infiniteLoop = infiniteLoop
-    )
-}
-
-@OptIn(ExperimentalPagerApi::class)
-@Composable
-fun HorizontalPager(
-    state: PagerState,
-    modifier: Modifier = Modifier,
-    reverseLayout: Boolean = false,
-    itemSpacing: Dp = 0.dp,
-    dragEnabled: Boolean = true,
-    flingBehavior: FlingBehavior = PagerDefaults.defaultPagerFlingConfig(state),
-    verticalAlignment: Alignment.Vertical = Alignment.CenterVertically,
-    horizontalAlignment: Alignment.Horizontal = Alignment.CenterHorizontally,
-    content: @Composable PagerScope.(page: Int) -> Unit,
-)
-*/
-/*
-@OptIn(ExperimentalPagerApi::class)
-@Composable
-fun CombinedTab() {
-    val tabData = listOf(
-        "MUSIC" to Icons.Filled.Home,
-        "MARKET" to Icons.Filled.ShoppingCart,
-        "FILMS" to Icons.Filled.AccountBox,
-        "BOOKS" to Icons.Filled.Settings,
-    )
-    val pagerState = rememberPagerState(
-        pageCount = tabData.size,
-        initialOffscreenLimit = 2,
-        infiniteLoop = true,
-        initialPage = 1,
-    )
-    val tabIndex = pagerState.currentPage
-    val coroutineScope = rememberCoroutineScope()
-    Column {
-        TabRow(
-            selectedTabIndex = tabIndex,
-            indicator = { tabPositions ->
-                TabRowDefaults.Indicator(
-                    Modifier.pagerTabIndicatorOffset(pagerState, tabPositions)
-                )
-            }
-        ) {
-            tabData.forEachIndexed { index, pair ->
-                Tab(selected = tabIndex == index, onClick = {
-                    coroutineScope.launch {
-                        pagerState.animateScrollToPage(index)
-                    }
-                }, text = {
-                    Text(text = pair.first)
-                }, icon = {
-                    Icon(imageVector = pair.second, contentDescription = null)
-                })
-            }
-        }*/
-
-       /* HorizontalPager(
-            state = pagerState,
-            modifier = Modifier.weight(1f)
-        ) { index ->
-            Column(
-                modifier = Modifier.fillMaxSize(),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Text(
-                    text = tabData[index].first,
-                )
-            }
-        }*/

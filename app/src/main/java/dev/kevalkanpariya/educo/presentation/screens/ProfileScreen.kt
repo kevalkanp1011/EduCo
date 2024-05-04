@@ -20,9 +20,8 @@ import androidx.constraintlayout.compose.ConstraintSet
 import androidx.constraintlayout.compose.Dimension
 import androidx.constraintlayout.compose.layoutId
 import dev.kevalkanpariya.educo.R
-import dev.kevalkanpariya.educo.domain.model.Student
-import dev.kevalkanpariya.educo.domain.model.keval
-import dev.kevalkanpariya.educo.domain.model.kevalkanpariya
+import dev.kevalkanpariya.educo.feature_course.domain.models.Student
+import dev.kevalkanpariya.educo.feature_course.domain.models.keval
 import dev.kevalkanpariya.educo.presentation.screens.student_profile.personal.Courses
 import dev.kevalkanpariya.educo.ui.theme.Grey700
 import dev.kevalkanpariya.educo.ui.theme.Grey800

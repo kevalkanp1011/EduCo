@@ -1,10 +1,12 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("kotlin-kapt")
+    kotlin("kapt")
     id("kotlinx-serialization")
     id("kotlin-parcelize")
-    id("com.google.dagger.hilt.android")
+    //id("com.google.dagger.hilt.android")
+    id("com.google.gms.google-services")
+    //id("com.google.firebase.crashlytics")
     //id("com.google.devtools.ksp")
 }
 
@@ -14,7 +16,7 @@ android {
 
     defaultConfig {
         applicationId = "dev.kevalkanpariya.educo"
-        minSdk = 22
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -53,6 +55,8 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+
+
 }
 
 dependencies {
@@ -98,6 +102,17 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    testImplementation("org.mockito:mockito-core:5.7.0")
+
+    val koin_version = "3.5.0"
+    val koin_compse_version = "3.5.0"
+
+
+    //Koin Di
+    implementation("io.insert-koin:koin-androidx-compose:$koin_compse_version")
+    testImplementation("io.insert-koin:koin-test:$koin_version")
+    testImplementation("io.insert-koin:koin-test-junit4:$koin_version")
+    testImplementation("io.insert-koin:koin-android-test:$koin_version")
 
     //Compose Ui Testing
     androidTestImplementation(platform("androidx.compose:compose-bom:2024.02.00"))
@@ -107,6 +122,14 @@ dependencies {
 
 
 
+    //Firebase
+    implementation(platform("com.google.firebase:firebase-bom:32.7.0"))
+    implementation("com.google.firebase:firebase-auth")
+    //implementation("com.google.firebase:firebase-crashlytics")
+    implementation("com.google.firebase:firebase-firestore")
+    implementation("com.google.firebase:firebase-storage")
+
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.8.1-Beta")
 
 
     
@@ -134,18 +157,28 @@ dependencies {
 
 
     // Dagger - Hilt
-    implementation("com.google.dagger:hilt-android:2.44")
-    kapt("com.google.dagger:hilt-android-compiler:2.44")
+    //implementation("com.google.dagger:hilt-android:2.44")
+    //kapt("com.google.dagger:hilt-android-compiler:2.44")
 
 
 
 
 
     // Sign in With Google
-    implementation("com.google.android.gms:play-services-auth:20.7.0")
+    implementation("com.google.android.gms:play-services-auth:21.1.0")
+    implementation("androidx.credentials:credentials:1.3.0-alpha03")
+
+    // optional - needed for credentials support from play services, for devices running
+    // Android 13 and below.
+    implementation("androidx.credentials:credentials-play-services-auth:1.3.0-alpha03")
+    implementation("com.google.android.libraries.identity.googleid:googleid:1.1.0")
 
     // FOR LOGGING
     implementation("com.jakewharton.timber:timber:5.0.1")
+
+    // Exoplayer
+    implementation("androidx.media3:media3-exoplayer:1.3.1")
+    implementation("androidx.media3:media3-ui:1.3.1")
 
 
 

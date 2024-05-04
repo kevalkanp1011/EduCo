@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "76161063528",
+    "project_id": "educo-7e1fa",
+    "storage_bucket": "educo-7e1fa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:76161063528:android:d6069376cfd1bdb92c79dd",
+        "android_client_info": {
+          "package_name": "dev.kevalkanpariya.educo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "76161063528-nae9eq61455bls1i3mdkc1a5dnp7u6le.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dev.kevalkanpariya.educo",
+            "certificate_hash": "e399af6f5a043b7ae47f83ca91d5694f0bf2034b"
+          }
+        },
+        {
+          "client_id": "76161063528-vv5om0c08g3n9tk4gj0hcmf3deb541r0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADf2LWM1kSec_E2k-ySlQQ6jtBOJUkv7w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "76161063528-vv5om0c08g3n9tk4gj0hcmf3deb541r0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

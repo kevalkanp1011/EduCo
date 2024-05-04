@@ -2,19 +2,10 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="Courses">
+      <entry key="CourseDetailsScreen">
         <State />
       </entry>
-      <entry key="HashTagPreview">
-        <State />
-      </entry>
-      <entry key="SearchFilterScreen">
-        <State />
-      </entry>
-      <entry key="SearchResultScreen">
-        <State />
-      </entry>
-      <entry key="SearchScreen">
+      <entry key="SettingsScreen">
         <State />
       </entry>
       <entry key="app">

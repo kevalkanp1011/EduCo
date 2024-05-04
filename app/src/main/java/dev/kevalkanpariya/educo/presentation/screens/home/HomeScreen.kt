@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -18,21 +17,19 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.ConstraintSet
 import androidx.navigation.NavHostController
 import dev.kevalkanpariya.educo.R
-import dev.kevalkanpariya.educo.navigation.Screen
-import dev.kevalkanpariya.educo.presentation.components.BottomNavigationBar
-import dev.kevalkanpariya.educo.presentation.components.CourseCard
-import dev.kevalkanpariya.educo.presentation.components.FreeTrial
-import dev.kevalkanpariya.educo.presentation.components.PopularCategory
-import dev.kevalkanpariya.educo.presentation.components.PopularCategory3
-import dev.kevalkanpariya.educo.presentation.components.ScaffoldWithBottomBar
-import dev.kevalkanpariya.educo.presentation.components.SearchBar
+import dev.kevalkanpariya.educo.core.navigation.Screen
+import dev.kevalkanpariya.educo.feature_course.presentation.components.BottomNavigationBar
+import dev.kevalkanpariya.educo.feature_course.presentation.components.CourseCard
+import dev.kevalkanpariya.educo.feature_course.presentation.components.FreeTrial
+import dev.kevalkanpariya.educo.feature_course.presentation.components.PopularCategory
+import dev.kevalkanpariya.educo.feature_course.presentation.components.ScaffoldWithBottomBar
+import dev.kevalkanpariya.educo.feature_course.presentation.components.SearchBar
 
 
 @Preview
 @Composable
 fun HomeScreen(
     navController: NavHostController? = null,
-//    sharedViewModel: SharedViewModel = hiltViewModel()
 ) {
     val user = null
 

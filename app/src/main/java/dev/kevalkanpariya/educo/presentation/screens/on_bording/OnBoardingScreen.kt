@@ -31,6 +31,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.ConstraintSet
+import dev.kevalkanpariya.educo.core.navigation.Routes
 import dev.kevalkanpariya.educo.ui.theme.Primary600
 import dev.kevalkanpariya.educo.utils.OnBoardingPage
 
@@ -68,7 +69,7 @@ fun OnBoardingScreen(
 
             TextButton(
                 modifier = Modifier.layoutId(SkipButtonRef),
-                onClick = { /*TODO*/ },
+                onClick = { onNavigate(Routes.SignInScreen.route) },
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color.Transparent),
                 elevation = ButtonDefaults.buttonElevation(defaultElevation = 0.dp)
@@ -114,7 +115,7 @@ fun OnBoardingScreen(
                     contentColor = Color.White
                 ),
                 shape = RoundedCornerShape(6.dp),
-                onClick = { /*TODO*/ }
+                onClick = { onNavigate(Routes.SignUpScreen.route) }
             ) {
                 Text(text = "Register")
             }
@@ -130,7 +131,7 @@ fun OnBoardingScreen(
                 ),
                 shape = RoundedCornerShape(6.dp),
                 border = BorderStroke(width = 1.dp, color = Primary600),
-                onClick = { /*TODO*/ }
+                onClick = { onNavigate(Routes.SignInScreen.route) }
             ) {
                 Text(text = "Login")
             }

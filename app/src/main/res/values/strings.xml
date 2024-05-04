@@ -2,4 +2,5 @@
     <string name="app_name">EduCo</string>
     <string name="gcp_id" translatable="false">716628650236-96qlhopigd3lve4jacc4eh5487lsmgeb.apps.googleusercontent.com</string>
     <string name="auth_error_msg">Login Error</string>
+    <string name="default_web_client_id">76161063528-vv5om0c08g3n9tk4gj0hcmf3deb541r0.apps.googleusercontent.com</string>
 </resources>

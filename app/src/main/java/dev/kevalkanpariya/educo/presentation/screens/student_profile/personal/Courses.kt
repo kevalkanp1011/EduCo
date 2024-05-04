@@ -9,7 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import dev.kevalkanpariya.educo.domain.model.courses
+import dev.kevalkanpariya.educo.feature_course.domain.models.courses
 import dev.kevalkanpariya.educo.presentation.screens.search.CourseItem
 import dev.kevalkanpariya.educo.presentation.screens.search.CourseOverviewItem
 

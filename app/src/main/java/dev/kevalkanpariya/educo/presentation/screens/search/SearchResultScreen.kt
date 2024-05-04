@@ -17,8 +17,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import dev.kevalkanpariya.educo.R
-import dev.kevalkanpariya.educo.domain.model.courses
-import dev.kevalkanpariya.educo.presentation.components.SearchBar
+import dev.kevalkanpariya.educo.feature_course.domain.models.courses
+import dev.kevalkanpariya.educo.feature_course.presentation.components.SearchBar
 
 @Preview
 @Composable
